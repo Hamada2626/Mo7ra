@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>رسالة النهارده لمهرتي ❤️</title><style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding:24px 16px 112px;font-family:Arial,sans-serif;background:linear-gradient(rgba(10,5,20,0.72),rgba(15,8,28,0.82)),url('image_0.png') center/cover no-repeat fixed;color:#f8eaff;overflow-x:hidden}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding:24px 16px 112px;font-family:Arial,sans-serif;background:linear-gradient(rgba(10,5,20,0.82),rgba(15,8,28,0.92)),url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%233b1456"/><stop offset="100%" stop-color="%230a0514"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>') center/cover no-repeat fixed;color:#f8eaff;overflow-x:hidden}
 #galaxyCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.card,.wheel-section,.game-section{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.82);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2}
+.card,.wheel-section,.game-section{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.88);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2;border-radius:24px}
 .heart{font-size:43px;animation:pulse 1.5s infinite,heartGlow 2s infinite alternate;filter:drop-shadow(0 0 12px #ff70d5)}
 h1{font-size:27px;color:#ff9cdd;margin:12px 0;text-shadow:0 0 15px #ff4fc477}
 .sub,.date,.footer,.wheel-sub,.wheel-status,.wheel-count{font-size:14px;color:#c6a8df;line-height:1.8}
@@ -66,7 +66,7 @@ body{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){.falling-petal{display:none}.touch-heart,.touch-sparkle,.touch-ripple{animation-duration:.3s}}
 
 /* Know each other game */
-.game-section{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.82);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2;border-radius:24px}
+.game-section{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.88);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2;border-radius:24px}
 .game-section h2{color:#ff9cdd;font-size:24px;margin:4px 0 10px}.game-sub{color:#c6a8df;font-size:14px;line-height:1.9;margin-bottom:18px}
 .game-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.level-btn{border:1px solid #d58aff55;background:#321b43;color:#f8eaff;border-radius:13px;padding:11px 5px;font-size:13px;cursor:pointer}.level-btn.selected{background:linear-gradient(135deg,#8739c7,#d94eaa);border-color:#f4b3ed}
 .game-panel{padding:18px 14px;border-radius:18px;background:rgba(49,27,67,.72);border:1px solid #d58aff33;margin-top:15px}.game-turn{color:#ffb5df;font-weight:bold;font-size:14px}.game-question{font-size:19px;line-height:1.9;margin:14px 0;color:#fff0fb}.game-answer{width:100%;min-height:100px;resize:vertical;border:1px solid #d58aff55;border-radius:14px;background:#170d24;color:#fff;padding:13px;font:16px Arial;line-height:1.7;outline:none}.game-answer:focus{border-color:#e99be0}.game-action{width:100%;border:0;border-radius:14px;padding:13px;margin-top:12px;background:linear-gradient(135deg,#8739c7,#e34fae);color:white;font-size:16px;font-weight:bold;cursor:pointer}.game-action:disabled{opacity:.5}.game-progress{font-size:12px;color:#c6a8df;margin-top:12px}.game-summary{text-align:right;line-height:1.9}.game-entry{padding:12px;margin:10px 0;border-radius:13px;background:#321b43}.game-entry strong{color:#ffb5df}.game-hidden{display:none!important}
@@ -125,14 +125,9 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
   .game-answer{min-height:58px;max-height:90px;padding:8px;font-size:13px}
   .game-entry{padding:7px;margin:5px 0}
 }
-@media screen and (max-width:600px) and (max-height:700px){
-  .message{font-size:10px;line-height:1.25;max-height:30svh}
-  .read-btn{padding:5px;font-size:10px}
-  .wheel-wrap{width:min(48vw,170px);height:min(48vw,170px)}
-}
 
 /* Our Memories */
-.memories-page{width:100%;max-width:500px;position:relative;z-index:2;text-align:center;padding:20px 16px 18px;background:rgba(15,10,30,.64);border:1px solid #bd8cff55;border-radius:26px;box-shadow:0 0 28px #8b5cff28,0 15px 45px #0008;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+.memories-page{width:100%;max-width:500px;position:relative;z-index:2;text-align:center;padding:20px 16px 18px;background:rgba(15,10,30,.82);border:1px solid #bd8cff55;border-radius:26px;box-shadow:0 0 28px #8b5cff28,0 15px 45px #0008;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
 .memories-page:before{content:"✦      ·      ✧       ·      ✦";display:block;color:#cda8ff;letter-spacing:9px;font-size:13px;text-shadow:0 0 12px #b78cff;margin-bottom:7px}
 .memories-title{direction:ltr;color:#f4c6ff;font-size:29px;line-height:1.2;margin:0 0 7px;text-shadow:0 0 16px #d16cff99}
 .memories-subtitle{direction:ltr;color:#d8b6ef;font-size:13px;margin:0 0 17px}
@@ -151,7 +146,7 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 .memory-sparkle{color:#f4b8ff;text-shadow:0 0 12px #d98aff}
 
 /* Gallery Page */
-.gallery-page{width:100%;max-width:500px;position:relative;z-index:2;text-align:center;padding:22px 16px;background:rgba(20,12,34,.82);border:1px solid #e1a0ff40;border-radius:26px;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}
+.gallery-page{width:100%;max-width:500px;position:relative;z-index:2;text-align:center;padding:22px 16px;background:rgba(20,12,34,.88);border:1px solid #e1a0ff40;border-radius:26px;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);max-height:80vh;overflow-y:auto}
 .gallery-title{color:#ff9cdd;font-size:25px;margin:0 0 6px;text-shadow:0 0 15px #ff4fc477}
 .gallery-sub{font-size:13px;color:#c6a8df;margin:0 0 18px;line-height:1.7}
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -241,17 +236,20 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 <h2 class="gallery-title">📸 أجمل صور وفيديوهات مهرتي</h2>
 <p class="gallery-sub">كل لحظة معاكي ذكرى محفورة في قلبي ❤️</p>
 <div class="gallery-grid">
-  <div class="gallery-item"><img src="1000135785.png" alt="صورة 1"><div class="gallery-caption">قمر بيلالي في كل طلّة 💗</div></div>
-  <div class="gallery-item"><img src="1000135786.png" alt="صورة 2"><div class="gallery-caption">سحر عيونك وجمالك ✨</div></div>
-  <div class="gallery-item"><img src="1000135781.png" alt="صورة 3"><div class="gallery-caption">أحلى مهارة في الدنيا 🌸</div></div>
-  <div class="gallery-item"><img src="1000135783.png" alt="صورة 4"><div class="gallery-caption">ابتسامتك بتنور دنيتي 🤍</div></div>
-  <div class="gallery-item"><img src="1000135784.png" alt="صورة 5"><div class="gallery-caption">ملامحك الفاتنة يا روحي 🥰</div></div>
-  <div class="gallery-item"><img src="1000135780.png" alt="صورة 6"><div class="gallery-caption">الجمال كله هنا 🥹💕</div></div>
-  <div class="gallery-item"><img src="1000135773.png" alt="صورة 7"><div class="gallery-caption">أغلى وأعز الناس على قلبي 🐎❤️</div></div>
-  <div class="gallery-item"><img src="1000135774.png" alt="صورة 8"><div class="gallery-caption">إشراقة يومي بيكي ✨</div></div>
-  <div class="gallery-item full-width"><img src="1000135775.png" alt="صورة 9"><div class="gallery-caption">ربنا ما يحرمني من ضحكتك ووجودك 💖</div></div>
-  <div class="gallery-item full-width"><video src="video1.mp4" controls playsinline preload="metadata"></video><div class="gallery-caption">فيديو مميز ليكي 🎥💕</div></div>
-  <div class="gallery-item full-width"><video src="video2.mp4" controls playsinline preload="metadata"></video><div class="gallery-caption">أغلى اللحظات معاكي 🥹❤️</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%233b1852'/><stop offset='100%' stop-color='%236e226e'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg1)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>💗</text></svg>" alt="صورة 1"><div class="gallery-caption">قمر بيلالي في كل طلّة 💗</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg2' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%234a154b'/><stop offset='100%' stop-color='%238a358a'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg2)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>✨</text></svg>" alt="صورة 2"><div class="gallery-caption">سحر عيونك وجمالك ✨</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg3' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%232a103f'/><stop offset='100%' stop-color='%235c1d5c'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg3)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🌸</text></svg>" alt="صورة 3"><div class="gallery-caption">أحلى مهارة في الدنيا 🌸</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg4' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23381038'/><stop offset='100%' stop-color='%23702270'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg4)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🤍</text></svg>" alt="صورة 4"><div class="gallery-caption">ابتسامتك بتنور دنيتي 🤍</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg5' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23421242'/><stop offset='100%' stop-color='%237d287d'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg5)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🥰</text></svg>" alt="صورة 5"><div class="gallery-caption">ملامحك الفاتنة يا روحي 🥰</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg6' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23301030'/><stop offset='100%' stop-color='%23631f63'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg6)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🥹</text></svg>" alt="صورة 6"><div class="gallery-caption">الجمال كله هنا 🥹💕</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg7' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2352183b'/><stop offset='100%' stop-color='%2391306b'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg7)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🐎</text></svg>" alt="صورة 7"><div class="gallery-caption">أغلى وأعز الناس على قلبي 🐎❤️</div></div>
+  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg8' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%233b154a'/><stop offset='100%' stop-color='%236d2a85'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg8)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>💫</text></svg>" alt="صورة 8"><div class="gallery-caption">إشراقة يومي بيكي ✨</div></div>
+  <div class="gallery-item full-width"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><defs><linearGradient id='bg9' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23401545'/><stop offset='100%' stop-color='%23802b78'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg9)'/><text x='50%' y='50%' font-size='90' text-anchor='middle' dominant-baseline='central'>💖 🌸 💖</text></svg>" alt="صورة 9"><div class="gallery-caption">ربنا ما يحرمني من ضحكتك ووجودك 💖</div></div>
+  <div class="gallery-item full-width" style="background:#170d24;padding:20px;text-align:center;border-radius:16px;">
+    <div style="font-size:38px;margin-bottom:8px">🎥</div>
+    <div style="color:#ff9cdd;font-weight:bold;font-size:15px;margin-bottom:4px">فيديو مميز ليكي 🎥💕</div>
+    <div style="color:#c6a8df;font-size:12px">أغلى اللحظات والذكريات الجميلة معاكي</div>
+  </div>
 </div>
 </main></section>
 
@@ -300,14 +298,12 @@ function dayNumber(d){return Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.
 function getDailyIndex(){return Math.max(0,dayNumber(new Date())-dayNumber(startDate))%messages.length}
 function getDateKey(){const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
 
-// عرض الرسالة فوراً دون انتظار أي شيء
 function render(){
   const current=getDailyIndex();
   const msgEl=document.getElementById("message");
   const dateEl=document.getElementById("date");
   if(msgEl) msgEl.textContent=messages[current];
-  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗
-"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
+  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗\n"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
 }
 
 render();
@@ -328,9 +324,7 @@ async function refreshReadStatus(){
     myButton.textContent=myRead?"💙 أحمد سجّل قراءة رسالة النهارده ✅":"أنا أحمد 💙 قريت الرسالة";
     herButton.disabled=herRead;
     myButton.disabled=myRead;
-    status.textContent="حالة قراءة رسالة النهارده 💌
-مهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"
-أحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
+    status.textContent="حالة قراءة رسالة النهارده 💌\nمهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"\nأحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
   }catch(error){
     console.error(error);
     status.textContent="تم تحميل الرسالة بنجاح (وضع الاتصال المحلي/أو عطل مؤقت في قاعدة البيانات).";
@@ -440,7 +434,6 @@ async function startApp(){
 }
 startApp();
 
-// لعبة اعرفيني أكثر
 const gameBanks={light:[
   "إيه أكتر حاجة بتضحكك؟",
   "لو عندنا يوم فاضي، تحب نعمل إيه؟",
