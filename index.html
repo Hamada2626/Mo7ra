@@ -1,239 +1,530 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>♡ Our Memories ♡</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>رسالة النهارده لمهرتي ❤️</title><style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding:24px 16px 112px;font-family:Arial,sans-serif;background:radial-gradient(ellipse at 20% 15%,#29113f 0,transparent 42%),radial-gradient(ellipse at 85% 80%,#25103b 0,transparent 45%),linear-gradient(145deg,#05030b,#0b0715 55%,#10091b);color:#f8eaff;overflow-x:hidden}
+#galaxyCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.card,.wheel-section,.game-section{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.82);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2}
+.heart{font-size:43px;animation:pulse 1.5s infinite,heartGlow 2s infinite alternate;filter:drop-shadow(0 0 12px #ff70d5)}
+h1{font-size:27px;color:#ff9cdd;margin:12px 0;text-shadow:0 0 15px #ff4fc477}
+.sub,.date,.footer,.wheel-sub,.wheel-status,.wheel-count{font-size:14px;color:#c6a8df;line-height:1.8}
+.message{margin:22px 0;padding:20px 17px;background:rgba(49,27,67,.72);border:1px solid #d58aff33;color:#ffeaff;box-shadow:inset 0 0 20px #d35cff0b;border-radius:20px;font-size:18px;line-height:2;white-space:pre-line;text-align:center}
+.date{font-size:13px;white-space:pre-line}
+.footer{font-size:13px;line-height:1.8;margin-top:22px}
+.read-section{margin-top:18px;padding:16px;background:rgba(49,27,67,.72);border:1px solid #d58aff33;border-radius:18px;color:#ffeaff;box-shadow:inset 0 0 20px #d35cff0b}
+.read-section p{font-size:15px;line-height:1.8}
+.read-btn{display:block;width:100%;margin:10px 0;padding:13px;border:0;border-radius:14px;background:linear-gradient(135deg,#8d3bd1,#d94eaa);box-shadow:0 0 15px #c14cff44;color:white;font-size:15px;cursor:pointer;transition:transform .2s,opacity .2s;line-height:1.8}
+.read-btn:active{transform:scale(.97)}
+.read-btn:disabled{opacity:.8;cursor:default}
+#readStatus{white-space:pre-line;font-size:14px;line-height:2;margin-top:12px}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@keyframes heartGlow{from{filter:drop-shadow(0 0 4px #f58ab9)}to{filter:drop-shadow(0 0 18px #ed76ac)}}
+@keyframes heartPop{0%{transform:scale(.5);opacity:.3}60%{transform:scale(1.3);opacity:1}100%{transform:scale(1);opacity:1}}
+.pop{animation:heartPop .45s ease}
+.touch-heart,.touch-sparkle,.touch-ripple,.falling-petal{position:fixed;pointer-events:none}
+.touch-heart,.touch-sparkle,.touch-ripple{z-index:9999}
+.touch-heart{font-size:var(--size);left:var(--x);top:var(--y);will-change:transform,opacity;animation:heartFly 1.2s ease-out forwards;filter:drop-shadow(0 0 8px #ff69d4)}
+@keyframes heartFly{0%{opacity:0;transform:translate(0,0) scale(.3) rotate(0)}20%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.3) rotate(var(--rotation))}}
+.touch-sparkle{left:var(--x);top:var(--y);color:#d9a5ff;text-shadow:0 0 12px #d9a5ff;font-size:var(--size);will-change:transform,opacity;animation:sparkleFly .8s ease-out forwards}
+@keyframes sparkleFly{0%{opacity:0;transform:scale(0) rotate(0)}40%{opacity:1;transform:scale(1.3) rotate(90deg)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0) rotate(180deg)}}
+.touch-ripple{width:15px;height:15px;border:2px solid #e7a0ff;box-shadow:0 0 15px #d66aff;border-radius:50%;left:var(--x);top:var(--y);transform:translate(-50%,-50%);animation:rippleEffect .6s ease-out forwards}
+@keyframes rippleEffect{to{width:90px;height:90px;opacity:0;border-width:1px}}
+.falling-petal{z-index:0;top:-40px;left:var(--left);font-size:var(--size);opacity:.65;animation:petalFall var(--duration) linear forwards;filter:drop-shadow(0 0 7px #ed80dc)}
+@keyframes petalFall{0%{transform:translateY(-30px) rotate(0deg);opacity:0}15%,85%{opacity:.7}100%{transform:translate(var(--drift),110vh) rotate(500deg);opacity:0}}
+.touch-surprise{position:fixed;inset:0;z-index:10001;display:flex;align-items:center;justify-content:center;padding:25px;background:#6d315355;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:.4s}
+.touch-surprise.show{opacity:1;visibility:visible}
+.surprise-box{width:100%;max-width:340px;background:linear-gradient(145deg,#21102f,#351642);border:1px solid #e49cff77;border-radius:25px;padding:30px 20px;text-align:center;box-shadow:0 0 35px #c14cff55;transform:scale(.6);transition:.4s}
+.touch-surprise.show .surprise-box{transform:scale(1)}
+.surprise-box .big-heart{font-size:55px;animation:pulse 1s infinite,heartGlow 2s infinite alternate}
+.surprise-box p{color:#ffc1e8;font-size:19px;line-height:1.9}
+.surprise-close{border:0;border-radius:14px;background:linear-gradient(135deg,#8739c7,#e34fae);color:white;padding:12px 25px;font-size:15px;cursor:pointer}
+.wheel-section,.game-section{overflow:hidden}
+.page-section{display:none;width:100%;max-width:500px;position:relative;z-index:2;margin:auto 0}
+.page-section.active{display:block;animation:pageIn .28s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.bottom-nav{position:fixed;z-index:10000;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(440px,calc(100% - 28px));display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:9px;background:rgba(24,12,38,.94);border:1px solid #d58aff66;border-radius:22px;box-shadow:0 8px 30px #0009,0 0 20px #a855f733;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-btn{border:1px solid transparent;border-radius:15px;background:transparent;color:#d9c3ec;padding:10px 8px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:15px;font-weight:bold;cursor:pointer;transition:.2s}
+.nav-btn .nav-icon{font-size:22px;line-height:1}
+.nav-btn.active{background:linear-gradient(135deg,#8739c7,#d94eaa);color:#fff;box-shadow:0 0 16px #c14cff55}
+body{scroll-behavior:smooth}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 50%, #f8bbd0 100%);
-      font-family: 'Cairo', sans-serif;
-      color: #4a1525;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px 16px;
-    }
+.wheel-section h2{color:#ff9cdd;margin:5px 0 10px;font-size:24px;text-shadow:0 0 15px #ff4fc477}
+.wheel-sub{font-size:14px;line-height:1.9;margin-bottom:18px}
+.wheel-wrap{width:290px;height:290px;max-width:100%;margin:25px auto 20px;position:relative}
+.wheel{width:100%;height:100%;border-radius:50%;border:7px solid #d9b4ff;box-shadow:0 0 25px #b75cff55;position:relative;background:conic-gradient(#f5a6c8 0deg 45deg,#d9b5f2 45deg 90deg,#ffc8a8 90deg 135deg,#f7a9b8 135deg 180deg,#b9d8f5 180deg 225deg,#f4c5df 225deg 270deg,#c9b6f3 270deg 315deg,#f7d49a 315deg 360deg);transition:transform 5s cubic-bezier(.12,.72,.12,1);overflow:hidden}
+.wheel-label{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:62px;min-height:32px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;font-weight:800;line-height:1.35;color:#24112f;text-shadow:0 1px 0 #ffffff99;white-space:normal;overflow-wrap:anywhere;pointer-events:none;padding:2px}
+.wheel-pointer{position:absolute;z-index:3;top:-15px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid #ff8bd6;filter:drop-shadow(0 3px 3px #71334f55)}
+.wheel-center{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border:5px solid white;border-radius:50%;background:linear-gradient(135deg,#8d3bd1,#e34fae);color:white;display:flex;align-items:center;justify-content:center;font-size:25px;box-shadow:0 3px 12px #71334f44;pointer-events:none}
+.wheel-btn{width:100%;border:0;border-radius:16px;padding:15px;background:linear-gradient(135deg,#8739c7,#e34fae);color:white;font-size:17px;font-weight:bold;cursor:pointer;box-shadow:0 0 22px #c14cff55;transition:.2s}
+.wheel-btn:active{transform:scale(.97)}
+.wheel-btn:disabled{opacity:.55;cursor:not-allowed}
+.wheel-status{margin-top:13px;font-size:13px;line-height:1.9}
+.wheel-result{display:none;margin-top:18px;padding:20px 15px;background:rgba(49,27,67,.72);border:1px solid #d58aff33;border-radius:18px;line-height:2;color:#ffeaff;box-shadow:inset 0 0 20px #d35cff0b}
+.wheel-result.show{display:block;animation:heartPop .5s ease}
+.wheel-result h3{color:#ff9cdd;margin:0 0 8px}
+.wheel-result p{font-size:17px;margin:0}
+.wheel-count{font-size:12px;margin-top:12px}
+@media(max-width:380px){.card,.wheel-section,.game-section{padding:23px 16px}h1{font-size:23px}.message{font-size:16px}.wheel-wrap{width:260px;height:260px}.wheel-label{width:55px;font-size:9px;min-height:30px}}
+@media(prefers-reduced-motion:reduce){.falling-petal{display:none}.touch-heart,.touch-sparkle,.touch-ripple{animation-duration:.3s}}
 
-    .page-section {
-      width: 100%;
-      max-width: 520px;
-    }
+/* Know each other game */
+.game-section{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.82);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2;border-radius:24px}
+.game-section h2{color:#ff9cdd;font-size:24px;margin:4px 0 10px}.game-sub{color:#c6a8df;font-size:14px;line-height:1.9;margin-bottom:18px}
+.game-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.level-btn{border:1px solid #d58aff55;background:#321b43;color:#f8eaff;border-radius:13px;padding:11px 5px;font-size:13px;cursor:pointer}.level-btn.selected{background:linear-gradient(135deg,#8739c7,#d94eaa);border-color:#f4b3ed}
+.game-panel{padding:18px 14px;border-radius:18px;background:rgba(49,27,67,.72);border:1px solid #d58aff33;margin-top:15px}.game-turn{color:#ffb5df;font-weight:bold;font-size:14px}.game-question{font-size:19px;line-height:1.9;margin:14px 0;color:#fff0fb}.game-answer{width:100%;min-height:100px;resize:vertical;border:1px solid #d58aff55;border-radius:14px;background:#170d24;color:#fff;padding:13px;font:16px Arial;line-height:1.7;outline:none}.game-answer:focus{border-color:#e99be0}.game-action{width:100%;border:0;border-radius:14px;padding:13px;margin-top:12px;background:linear-gradient(135deg,#8739c7,#e34fae);color:white;font-size:16px;font-weight:bold;cursor:pointer}.game-action:disabled{opacity:.5}.game-progress{font-size:12px;color:#c6a8df;margin-top:12px}.game-summary{text-align:right;line-height:1.9}.game-entry{padding:12px;margin:10px 0;border-radius:13px;background:#321b43}.game-entry strong{color:#ffb5df}.game-hidden{display:none!important}
+/* Intro screen */
+body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:none!important}
+.intro-screen{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;padding:24px 18px;background:radial-gradient(ellipse at 50% 25%,#321447 0,transparent 48%),linear-gradient(145deg,#05030b,#0b0715 58%,#16091f);transition:opacity .65s ease,visibility .65s ease}
+.intro-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-card{position:relative;width:100%;max-width:430px;padding:38px 24px 30px;text-align:center;border:1px solid #e1a0ff55;border-radius:30px;background:rgba(25,13,39,.78);box-shadow:0 0 45px #a855f744,0 20px 55px #0009;backdrop-filter:blur(16px);overflow:hidden}
+.intro-card:before{content:"404";position:absolute;top:8px;left:0;right:0;font-size:112px;font-weight:900;letter-spacing:8px;color:#ffffff08;pointer-events:none}
+.intro-art{position:relative;width:190px;height:165px;margin:0 auto 18px;display:grid;place-items:center}
+.intro-goose{font-size:68px;filter:drop-shadow(0 0 20px #f49bdc88);animation:introFloat 3s ease-in-out infinite}
+.intro-orbit{position:absolute;width:175px;height:105px;border:1px solid #e8a1ff66;border-radius:50%;transform:rotate(-22deg);animation:orbitGlow 4s ease-in-out infinite}
+.intro-orbit:after{content:"✦";position:absolute;top:3px;right:24px;color:#ffd2f0;font-size:20px;text-shadow:0 0 12px #ff8bd6}
+.intro-card h2{position:relative;color:#ff9cdd;font-size:25px;margin:8px 0 12px;text-shadow:0 0 15px #ff4fc477}
+.intro-card p{position:relative;color:#e8d5f4;font-size:15px;line-height:2;margin:0 0 24px}
+.intro-button{position:relative;width:100%;border:0;border-radius:16px;padding:15px 20px;background:linear-gradient(135deg,#8739c7,#e34fae);color:#fff;font-size:17px;font-weight:bold;box-shadow:0 0 22px #c14cff55;cursor:pointer}
+.intro-note{position:relative;display:block;margin-top:18px;color:#c6a8df;font-size:12px;letter-spacing:.3px;direction:ltr}
+@keyframes introFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-11px) rotate(3deg)}}
+@keyframes orbitGlow{0%,100%{opacity:.45;transform:rotate(-22deg) scale(.96)}50%{opacity:1;transform:rotate(-12deg) scale(1.04)}}
 
-    .memories-page {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      border-radius: 28px;
-      padding: 36px 24px;
-      box-shadow: 0 20px 45px rgba(180, 40, 80, 0.12);
-      text-align: center;
-    }
 
-    .intro-goose {
-      font-size: 3.2rem;
-      margin-bottom: 8px;
-      animation: float 3s ease-in-out infinite;
-    }
+/* Compact mobile full-screen layout: keep the whole message screen visible without page scrolling */
+@media screen and (max-width:600px) and (max-height:950px){
+  html,body{width:100%;height:100%;min-height:100%;overflow:hidden}
+  body{min-height:100svh;height:100svh;gap:0;padding:5px 8px calc(62px + env(safe-area-inset-bottom));justify-content:center}
+  .page-section{width:100%;max-width:500px;margin:0 auto;max-height:100%;overflow:hidden}
+  .page-section.active{display:flex;align-items:center;justify-content:center;min-height:0}
+  .card,.wheel-section,.game-section{width:100%;max-height:100%;padding:10px 11px;border-radius:18px;overflow:hidden}
+  .heart{font-size:25px;line-height:1;margin:0}
+  h1{font-size:clamp(17px,4.8vw,21px);line-height:1.25;margin:5px 0}
+  .sub{font-size:11px;line-height:1.35}
+  .message{margin:7px 0;padding:8px 9px;border-radius:14px;font-size:clamp(10px,2.9vw,12px);line-height:1.38;max-height:34svh;overflow:hidden}
+  .date{font-size:10px;line-height:1.35}
+  .read-section{margin-top:7px;padding:7px 8px;border-radius:13px}
+  .read-section p{font-size:11px;line-height:1.35;margin:2px 0 5px}
+  .read-btn{margin:5px 0;padding:7px 8px;border-radius:10px;font-size:11px;line-height:1.3}
+  #readStatus{font-size:10px;line-height:1.35;margin-top:5px}
+  .footer{display:none}
+  .bottom-nav{bottom:calc(4px + env(safe-area-inset-bottom));width:calc(100% - 16px);gap:4px;padding:5px;border-radius:15px}
+  .nav-btn{padding:6px 3px;gap:4px;font-size:11px;border-radius:11px}
+  .nav-btn .nav-icon{font-size:17px}
+  .wheel-section h2,.game-section h2{font-size:18px;margin:2px 0 5px}
+  .wheel-sub,.game-sub{font-size:11px;line-height:1.4;margin:4px 0 7px}
+  .wheel-wrap{width:min( min(54vw,210px), 27svh);height:min( min(54vw,210px), 27svh);margin:8px auto}
+  .wheel-label{font-size:8px;width:48px}
+  .wheel-center{width:46px;height:46px;font-size:19px;border-width:3px}
+  .wheel-pointer{top:-11px;border-left-width:11px;border-right-width:11px;border-top-width:22px}
+  .wheel-btn,.game-action{padding:9px;font-size:13px;border-radius:11px;margin-top:6px}
+  .wheel-status,.wheel-count{font-size:10px;line-height:1.4;margin-top:5px}
+  .wheel-result{margin-top:7px;padding:9px;line-height:1.4}
+  .wheel-result p{font-size:12px}
+  .game-levels{gap:5px;margin:7px 0}
+  .level-btn{padding:7px 3px;font-size:10px;border-radius:9px}
+  .game-panel{padding:9px 8px;margin-top:7px;border-radius:13px}
+  .game-turn,.game-progress{font-size:10px}
+  .game-question{font-size:14px;line-height:1.45;margin:7px 0}
+  .game-answer{min-height:58px;max-height:90px;padding:8px;font-size:13px}
+  .game-entry{padding:7px;margin:5px 0}
+}
+@media screen and (max-width:600px) and (max-height:700px){
+  .message{font-size:10px;line-height:1.25;max-height:30svh}
+  .read-btn{padding:5px;font-size:10px}
+  .wheel-wrap{width:min(48vw,170px);height:min(48vw,170px)}
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
 
-    .intro-title {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: #b81d48;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
+/* Our Memories — matching the existing galaxy theme */
+.memories-page{width:100%;max-width:500px;position:relative;z-index:2;text-align:center;padding:20px 16px 18px;background:rgba(15,10,30,.64);border:1px solid #bd8cff55;border-radius:26px;box-shadow:0 0 28px #8b5cff28,0 15px 45px #0008;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+.memories-page:before{content:"✦      ·      ✧       ·      ✦";display:block;color:#cda8ff;letter-spacing:9px;font-size:13px;text-shadow:0 0 12px #b78cff;margin-bottom:7px}
+.memories-title{direction:ltr;color:#f4c6ff;font-size:29px;line-height:1.2;margin:0 0 7px;text-shadow:0 0 16px #d16cff99}
+.memories-subtitle{direction:ltr;color:#d8b6ef;font-size:13px;margin:0 0 17px}
+.memory-counter{position:relative;direction:ltr;text-align:center;padding:15px 12px 13px;margin:12px 0;border:1px solid #d49aff8c;border-radius:20px;background:linear-gradient(135deg,rgba(37,22,62,.88),rgba(25,15,49,.82));box-shadow:inset 0 0 22px #bd78ff16,0 0 18px #a45bff22;overflow:hidden}
+.memory-counter:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 10% 15%,#d69aff18,transparent 35%),radial-gradient(circle at 90% 85%,#ff79d218,transparent 38%)}
+.memory-counter>*{position:relative;z-index:1}
+.memory-label{font-size:15px;font-weight:bold;color:#f0c5ff;line-height:1.45;margin:0 0 5px}
+.memory-icon{font-size:23px;margin-right:6px;filter:drop-shadow(0 0 8px #e78cff)}
+.memory-date{font-size:11px;color:#cbb0e9;margin:0 0 10px}
+.memory-days{font-size:clamp(36px,10vw,48px);font-weight:800;line-height:1.05;color:#ffd0f2;text-shadow:0 0 15px #f36bdf99;font-variant-numeric:tabular-nums}
+.memory-days span{font-size:17px;font-weight:600;color:#e9b8f5}
+.memory-units{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:10px;padding-top:9px;border-top:1px solid #d69aff44}
+.memory-unit{font-size:12px;color:#ead9f7;font-variant-numeric:tabular-nums;white-space:nowrap}
+.memory-unit b{display:block;font-size:17px;color:#f7c9ff;margin-bottom:2px}
+.memory-footer{direction:ltr;color:#e9b8ed;font-size:14px;line-height:1.7;margin:16px 4px 3px;text-shadow:0 0 12px #d46cff55}
+.memory-sparkle{color:#f4b8ff;text-shadow:0 0 12px #d98aff}
+@media screen and (max-width:600px) and (max-height:950px){
+ .bottom-nav{grid-template-columns:repeat(4,minmax(0,1fr));width:calc(100% - 12px);gap:2px;padding:4px}
+ .nav-btn{min-width:0;padding:6px 1px;gap:3px;font-size:10px;white-space:nowrap}
+ .nav-btn .nav-icon{font-size:16px}
+ .memories-page{width:100%;max-height:calc(100svh - 78px);overflow-y:auto;overscroll-behavior:contain;padding:13px 10px 10px;border-radius:19px}
+ .memories-title{font-size:24px}
+ .memories-subtitle{font-size:11px;margin-bottom:10px}
+ .memory-counter{padding:11px 8px 10px;margin:9px 0;border-radius:16px}
+ .memory-label{font-size:12px}
+ .memory-icon{font-size:19px}
+ .memory-date{font-size:10px;margin-bottom:7px}
+ .memory-days{font-size:38px}
+ .memory-days span{font-size:14px}
+ .memory-units{margin-top:7px;padding-top:7px}
+ .memory-unit{font-size:10px}
+ .memory-unit b{font-size:15px}
+ .memory-footer{font-size:12px;margin:10px 2px 2px}
+}
 
-    .memories-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #d6336c;
-      margin-bottom: 4px;
-      direction: ltr;
-    }
+</style></head><body>
+<canvas id="galaxyCanvas"></canvas>
+<section class="intro-screen" id="introScreen" aria-label="صفحة البداية"><div class="intro-card"><div class="intro-art"><div class="intro-orbit"></div><div class="intro-goose">🐎</div></div><h2>حدث خطأ ما</h2><p>مش تايهة ولا حاجة... رسالتك الحلوة ومفاجأة النهارده مستنيينكي هنا 💌</p><button class="intro-button" id="goHomeButton" type="button">Go to Home</button><span class="intro-note">A little message made just for you ✨</span></div></section>
 
-    .memories-subtitle {
-      font-size: 0.95rem;
-      color: #8c4a5e;
-      margin-bottom: 28px;
-      direction: ltr;
-    }
+<section class="page-section active" id="messagesPage"><main class="card"><div class="heart">💗</div><h1>مهرتي، يا أجمل حاجة في دنيتي</h1><div class="sub">كل يوم رسالة مخصوصة ليكي يا مهرة 💌</div><div class="message" id="message">جاري تحميل رسالة النهارده...</div><div class="date" id="date"></div><div class="read-section"><p>خلصتي قراءة رسالة النهارده يا مهرتي؟ 💗</p><button class="read-btn" id="herRead">أنا مهرة ❤️ قريت الرسالة</button><button class="read-btn" id="myRead">أنا أحمد 💙 قريت الرسالة</button><div id="readStatus">جاري تحميل حالة القراءة...</div></div><div class="footer">ربنا يخليكي ليا ويحفظك من كل شر يا حبيبتي 🤍</div></main></section>
 
-    .memory-counter {
-      background: #fff;
-      border: 1px solid #ffd6e3;
-      border-radius: 20px;
-      padding: 22px 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 20px rgba(214, 51, 108, 0.06);
-      transition: transform 0.25s ease;
-    }
+<section class="page-section" id="wheelPage"><section class="wheel-section">
+<h2>🎡 عجلة المفاجآت بتاعتك</h2>
+<div class="wheel-sub">كل يوم ليكي لفة واحدة، شوفي النهارده مخبيلك إيه ❤️</div>
+<div class="wheel-wrap">
+<div class="wheel-pointer"></div>
+<div class="wheel" id="wheel">
+<span class="wheel-label" style="--x:62.4%;--y:19.7%">❤️ الحب</span>
+<span class="wheel-label" style="--x:80.3%;--y:37.6%">😂 الضحك</span>
+<span class="wheel-label" style="--x:80.3%;--y:62.4%">🎁 المفاجآت</span>
+<span class="wheel-label" style="--x:62.4%;--y:80.3%">📸 الصور</span>
+<span class="wheel-label" style="--x:37.6%;--y:80.3%">💌 الرسائل</span>
+<span class="wheel-label" style="--x:19.7%;--y:62.4%">🧠 الأسئلة</span>
+<span class="wheel-label" style="--x:19.7%;--y:37.6%">🥰 رومانسية</span>
+<span class="wheel-label" style="--x:37.6%;--y:19.7%">✨ متنوعة</span>
+</div>
+<div class="wheel-center">💗</div>
+</div>
+<button class="wheel-btn" id="spinButton">لفّي العجلة 🎀</button>
+<div class="wheel-status" id="wheelStatus"></div>
+<div class="wheel-result" id="wheelResult"><h3>🎉 تحدي النهارده</h3><p id="challengeText"></p><div class="wheel-count" id="wheelCount"></div></div>
+</section></section>
 
-    .memory-counter:hover {
-      transform: translateY(-3px);
-    }
+<section class="page-section" id="gamePage"><section class="game-section">
+<h2>🧩 اعرفيني أكتر</h2><div class="game-sub">سؤال ليكي وسؤال ليا... نشوف قد إيه عارفين بعض؟ ❤️</div>
+<div class="game-sub">كل واحد يختار هو مين من جهازه، وبعدها العبوا سوا ❤️</div><div class="game-levels" style="grid-template-columns:repeat(2,1fr)"><button class="level-btn" id="roleMe" type="button">💙 أنا أحمد</button><button class="level-btn" id="roleHer" type="button">💗 أنا هي</button></div><div class="game-sub" id="roleStatus">اختار هويتك على الجهاز ده</div><div id="gameSetup"><div class="game-sub">اختاروا مستوى الأسئلة وابدأوا جولتكوا</div><div class="game-levels"><button class="level-btn selected" data-level="light">🌸 خفيف</button><button class="level-btn" data-level="feelings">❤️ مشاعر</button><button class="level-btn" data-level="deep">🧠 عميق</button></div><button class="game-action" id="startGame">ابدأوا اللعب 🎀</button></div>
+<div id="gamePlay" class="game-panel game-hidden"><div class="game-turn" id="gameTurn"></div><div class="game-question" id="gameQuestion"></div><textarea class="game-answer" id="gameAnswer" placeholder="اكتب إجابتك هنا..."></textarea><button class="game-action" id="saveAnswer">احفظ الإجابة وكمل</button><div class="game-progress" id="gameProgress"></div><div class="game-summary" id="gameLiveAnswers"></div></div>
+<div id="gameDone" class="game-panel game-hidden"><h3 style="color:#ff9cdd">خلصتوا الجولة! 🎉</h3><div class="game-summary" id="gameSummary"></div><button class="game-action" id="newGame">العبوا جولة جديدة</button></div>
+</section></section>
 
-    .memory-label {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #5c192e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
+<section class="page-section" id="memoriesPage"><main class="memories-page">
+<h2 class="memories-title">♡ Our Memories ♡</h2>
+<p class="memories-subtitle">Three moments... One beautiful story. ❤️</p>
+<article class="memory-counter" aria-live="off">
+<h3 class="memory-label"><span class="memory-icon">🐴</span>أول مرة شوفت فيها مهرتي</h3>
+<p class="memory-date">10 أبريل 2024</p>
+<div class="memory-days" id="memorySeeDays">0 <span>Days</span></div>
+<div class="memory-units"><div class="memory-unit"><b id="memorySeeHours">00</b>Hours</div><div class="memory-unit"><b id="memorySeeMinutes">00</b>Minutes</div><div class="memory-unit"><b id="memorySeeSeconds">00</b>Seconds</div></div>
+</article>
+<article class="memory-counter" aria-live="off">
+<h3 class="memory-label"><span class="memory-icon">💌</span>أول مرة كلمت فيها مهرتي</h3>
+<p class="memory-date">11 يوليو 2026</p>
+<div class="memory-days" id="memoryTalkDays">0 <span>Days</span></div>
+<div class="memory-units"><div class="memory-unit"><b id="memoryTalkHours">00</b>Hours</div><div class="memory-unit"><b id="memoryTalkMinutes">00</b>Minutes</div><div class="memory-unit"><b id="memoryTalkSeconds">00</b>Seconds</div></div>
+</article>
+<article class="memory-counter" aria-live="off">
+<h3 class="memory-label"><span class="memory-icon">❤️</span>أول مرة اعترفت بحبي ليها</h3>
+<p class="memory-date">23 سبتمبر 2026</p>
+<div class="memory-days" id="memoryLoveDays">0 <span>Days</span></div>
+<div class="memory-units"><div class="memory-unit"><b id="memoryLoveHours">00</b>Hours</div><div class="memory-unit"><b id="memoryLoveMinutes">00</b>Minutes</div><div class="memory-unit"><b id="memoryLoveSeconds">00</b>Seconds</div></div>
+</article>
+<p class="memory-footer"><span class="memory-sparkle">✦</span> Every second since then has been a beautiful memory. ❤️</p>
+</main></section>
 
-    .memory-icon {
-      font-size: 1.35rem;
-    }
+<nav class="bottom-nav" aria-label="التنقل بين أقسام الموقع"><button class="nav-btn active" type="button" data-page="messagesPage"><span class="nav-icon">💌</span><span>الرسائل</span></button><button class="nav-btn" type="button" data-page="wheelPage"><span class="nav-icon">🎡</span><span>العجلة</span></button><button class="nav-btn" type="button" data-page="gamePage"><span class="nav-icon">🧩</span><span>اعرفيني أكتر</span></button><button class="nav-btn" type="button" data-page="memoriesPage"><span class="nav-icon">💗</span><span>Our Memories</span></button></nav>
 
-    .memory-date {
-      font-size: 0.9rem;
-      color: #9e586d;
-      margin-bottom: 16px;
-    }
+<div class="touch-surprise" id="touchSurprise"><div class="surprise-box"><div class="big-heart">💗</div><p>عارفة يا مهرتي؟ 🥹<br>كل لمسة منك هنا بتفكرني<br>قد إيه إنتي مميزة عندي ❤️</p><button class="surprise-close" id="closeSurprise">بحبك يا مهرة 💕</button></div></div>
 
-    .memory-days {
-      font-size: 2.3rem;
-      font-weight: 800;
-      color: #d6336c;
-      line-height: 1.1;
-      margin-bottom: 14px;
-      direction: ltr;
-    }
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";import{getFirestore,doc,setDoc,getDoc,serverTimestamp,onSnapshot,runTransaction}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";import{getAuth,signInAnonymously}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+const firebaseConfig={apiKey:"AIzaSyD4I4NviTS4pNo5hxksiGDr-2SiOVaj4AI",authDomain:"zozo-41d24.firebaseapp.com",projectId:"zozo-41d24",storageBucket:"zozo-41d24.firebasestorage.app",messagingSenderId:"872003176089",appId:"1:872003176089:web:c9d522e470d6e7124b5a08",measurementId:"G-HZRTXWPJSX"};const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app);
+const messages=[
+`يا مهرتي يا حتة من قلبي ❤️
+أنا مش عارف أوصفلك إنتي بقيتي غالية عندي قد إيه، بس كل يوم بيعدي بحس إني محظوظ إن ربنا جمعني بيكي. وجودك في حياتي بقى من الحاجات اللي بتفرحني من غير ما تعملي أي حاجة، مجرد إنك موجودة كفاية يخليني مبسوط. بحب كلامك وضحكتك وتفاصيلك الصغيرة، وبحب إنك إنتي تكوني إنتي من غير أي تكلف. ربنا يحفظك ليا ويفرح قلبك دايمًا ويبعد عنك كل زعل، ويخليني سبب في ضحتك مش دمعتك. بحبك يا أجمل حاجة حصلتلي 💗`,
+`صباح الخير على عيون قلبي 🥹💕
+عارفة يا مهرتي، ساعات ببقى مشغول أو يومي بيكون مليان حاجات، وفجأة أفتكرك أو أشوف رسالة منك ألاقي نفسي ابتسمت من غير ما أحس. إنتي بقيتي جزء جميل من تفاصيل يومي، حتى أبسط كلام منك بيفضل في بالي ويفرحني. نفسي كل صباح تصحي وإنتي مرتاحة ومبسوطة، وكل يوم يكون فيه حاجة حلوة تستاهل ابتسامتك. بدعي ربنا يطمن قلبك ويكتبلك الخير ويخليكي مبسوطة دايمًا. بحبك يا دنيتي ❤️`,
+`يا حبيبتي ويا أجمل نصيب ❤️
+لو بإيدي أديكي حاجة واحدة، كنت هديكي راحة بال متخلصش وفرحة متغيبش عن قلبك. كنت هخلي كل يوم في حياتك فيه سبب يخليكي تضحكي من قلبك، ومفيش حاجة تشغلك أو تزعلك. إنتي تستاهلي كل حاجة حلوة في الدنيا، وتستاهلي حد يسمعك ويهتم بتفاصيلك ويقدّر وجودك. أنا بتمنى أشوفك دايمًا ناجحة ومبسوطة وفخورة بنفسك. ربنا يبعد عنك كل شر ويكتبلك أيام كلها خير وفرح، ويفضل قلبك جميل زي ما هو 💗`,
+`مهرتي الجميلة 🐥❤️
+أنا بحب تفاصيلك الصغيرة قبل الكبيرة، وبحب طريقتك وكلامك واللحظات اللي بنضحك فيها على أي حاجة تافهة. بحب هزارك حتى لما بتبقي شقية ومش بتبطلي رغي 😂، وبحب إن ليكي طريقة خاصة بتخلي أي وقت عادي يبقى مميز. يمكن مش بعرف أقولك كل ده كل يوم، بس بجد وجودك فارق معايا. ربنا يديم ضحكتك ويحفظك من كل شر ويكتبلك أيام جميلة شبه قلبك 🥹💞`,
+`يا مهرة يا راحة قلبي 💌
+عايزك تفتكري دايمًا إنك غالية ومهمة، وإن أحلامك تستاهل إنك تسعي ليها مهما الطريق كان طويل. متقلليش أبدًا من نفسك أو من أي حاجة بتعمليها، حتى لو كانت خطوة صغيرة. أنا بتمنى أشوفك بتوصلي لكل حاجة نفسك فيها، وتفرحي بنفسك وبنجاحك. ولو يوم تعبتي أو حسّيتي إن الدنيا كتير عليكي، خدي وقتك وارتاحي ومتضغطيش على نفسك. ربنا يرزقك راحة بال ويكتبلك الخير في كل خطوة. بحبك يا مهرتي ❤️`,
+`يا أجمل بنت في عيني 💗
+كل يوم بحس إن كلمة بحبك لوحدها مش كفاية توصف اللي جوايا. إنتي بقيتي جزء جميل من يومي ومن دعواتي ومن الحاجات اللي بتخليني أبتسم فجأة. بحب لما تحكيلي عن يومك، ولما تشاركيني حاجة فرحتك، وحتى التفاصيل الصغيرة اللي ممكن متاخديش بالك منها. نفسي أفضل أشوفك مبسوطة ومحققة اللي بتحلمي بيه. ربنا يحفظك ويحفظ قلبك ويخلّي أيامك أحلى من كل اللي فات 🥹❤️`,
+`يا مهرتي الحلوة 🍓💕
+لو يومك كان طويل أو متعب، أتمنى الرسالة دي تفكرك إنك تستاهلي ترتاحي وتفرحي وتدلعي نفسك شوية. متخليش أي يوم صعب ينسيكي كل الحاجات الحلوة اللي فيكي. إنتي عندك أحلام وقدرات وحاجات كتير جميلة، وأنا بتمنى أشوفك دايمًا بتكبري وتنجحي وتحققي اللي نفسك فيه. خدي بالك من نفسك ومن صحتك ومن قلبك، وربنا يريح بالك ويكتبلك كل خير. بحبك يا أحلى مهرة ❤️`,
+`مهرتي بتاعتي 😂❤️
+إنتي عارفة إنك ممكن تخلّي يومي أحلى بكلمة واحدة؟ ساعات كلمة منك أو ضحكة بسيطة بتفضل معايا طول اليوم. بحب هزارنا وطريقتنا في الكلام والحاجات اللي بنضحك عليها ومحدش غيرنا ممكن يفهمها. يمكن دي حاجات بسيطة، بس بالنسبالي غالية جدًا. نفسي نفضل نعمل ذكريات حلوة ونضحك سوا على حاجات كتير. ربنا يفضل ساترك وحافظك ويفرح قلبك دايمًا يا مهرتي 💗`,
+`يا حبيبتي الجميلة 🥹💖
+مش لازم يكون فيه مناسبة عشان أقولك إنك غالية عندي. أنا بحبك في الأيام الحلوة والعادية، وبحب إننا نشارك بعض تفاصيل يومنا حتى لو كانت حاجات صغيرة جدًا. بحب أعرف إيه اللي فرحك وإيه اللي شغلك وإيه اللي نفسك تعمليه. وعايزك تعرفي إن مشاعرك مهمة وإن كلامك ليه قيمة عندي. ربنا يديم بينا الود والتفاهم، ويرزقك راحة بال وفرحة كبيرة تليق بيكي ❤️`,
+`يا دنيتي يا مهرة 💌
+ربنا يحفظك بعينه اللي مبتنامش، ويبعد عنك الأذى والحزن، ويرزقك فرحة من حيث لا تحتسبي. ربنا يسهّل كل حاجة واقفة قدامك، ويكرمك في دراستك وحياتك، ويحققلك الحاجات اللي بتدعي بيها في سرك. ونفسي كل ما تفتحي رسالة من دول تفتكري إن فيه حد بيتمنالك الخير من قلبه، وبيحب يشوفك مبسوطة وناجحة. بحبك يا مهرتي 💗`,
+`يا مهرتي الحلوة ❤️
+أنا ممتن لكل لحظة ضحكنا فيها ولكل مرة حسّيت فيها إن وجودك مفرّحني. ممتن لكل كلمة حلوة وكل اهتمام وكل تفصيلة صغيرة بينا. يمكن مش كل يوم بيكون مثالي، بس وجود حد غالي زيك بيخلّي الحاجات الحلوة ليها طعم تاني. أتمنى أكون دايمًا شخص يضيف لحياتك فرحة وراحة، مش ضغط أو زعل. ربنا يحفظك ويقوّيكي في كل خطوة ويجعل قلبك مطمئن وأيامك مليانة بركة 🥹💕`,
+`يا مهرة يا نور أيامي 🌷
+أتمنى دايمًا تلاقي سبب تبتسمي عشانه، حتى لو كان صغير زي رسالة حلوة أو موقف لطيف أو حاجة كنتي مستنياها. متخليش الأيام الصعبة تنسيكي إن لسه فيه حاجات جميلة كتير جاية. إنتي تستاهلي الفرحة والاهتمام والكلام الحلو، وتستاهلي تحققي كل حلم نفسك فيه. ربنا يطمن قلبك ويكتبلك كل خير، ويفضل قلبك جميل زي ما هو ❤️`,
+`حبيبتي ومهرتي 🐥💗
+أحلى حاجة عندي إننا نشارك بعض الحاجات الصغيرة قبل الكبيرة. إنك تحكيلي عن يومك أو تقوليلي موقف حصل معاكي أو حتى تبعتيلي كلمة عادية، كل ده بيبقى ليه قيمة عندي. بحب إننا نعرف تفاصيل بعض ونفضل قريبين من بعض بالكلام والاهتمام. ربنا يديم الود بينا، ويعلّمنا نكون أحنّ على بعض، ويحفظك من كل شر يا أغلى الناس 🥹`,
+`يا أجمل صدفة في حياتي ❤️
+من الحاجات اللي بحمد ربنا عليها إنك بقيتي جزء من حياتي. وجودك خلاني أعرف إن فيه أشخاص ممكن يخلّوا أبسط التفاصيل مميزة. بتمنالك أيام كلها خير، ونجاح في كل حاجة بتسعي ليها، وراحة بال تخليكي تنامي وإنتي مطمنة. ربنا يكتبلك ناس طيبة حواليكي، ويحفظ قلبك من أي حاجة تضايقه. بحبك يا مهرتي 💕`,
+`يا مهرة قلبي 🍓
+متشيليش هم كل حاجة مرة واحدة يا حبيبتي، خدي يومك خطوة خطوة وادي لنفسك فرصة ترتاحي. مش لازم كل حاجة تحصل بسرعة، ومش لازم تكوني قادرة على كل حاجة في نفس الوقت. أنا مؤمن إنك تقدري توصلي لحاجات كتير نفسك فيها، وربنا هيكرمك على تعبك ومحاولاتك. خليكي دايمًا واثقة في نفسك، وافتكري إنك غالية جدًا. بحبك يا مهرتي ❤️`,
+`مهرتي حبيبتي 💌
+بحب إننا نخلق ذكريات من أبسط المواقف، وبحب لما نضحك على حاجة تافهة ونفضل فاكرينها بعد كده 😂❤️. يمكن حد تاني يشوفها تفاصيل عادية، بس بالنسبالي دي لحظات غالية عشان كانت معاكي. نفسي نفضل نضيف لذكرياتنا حاجات حلوة كتير، ونفضل نعرف نضحك ونفهم بعض ونسمع بعض. ربنا يديم بينا المودة والرحمة ويخلّي أيامك كلها حلوة 💗`,
+`يا حبيبة قلبي 🥹❤️
+ربنا يعلم إني بتمنالك كل خير، مش بس النهارده لكن في كل يوم. بتمنى أشوفك ناجحة ومبسوطة ومحققة كل حاجة نفسك فيها، وأشوف تعبك بيتحول لفرحة وفخر. ربنا يفتحلك أبواب رزقه وفضله، ويبعد عنك الحيرة والقلق، ويرزقك الحكمة والراحة. ولو فيه حاجة شاغلة بالك، أتمنى ربنا يسهّلها عليكي ويطمن قلبك. تفضلي دايمًا بخير يا مهرتي 💞`,
+`يا أجمل مهرة في الدنيا 😂💕
+عارفة إنك تستاهلي تسمعي كلام حلو كل يوم؟ تستاهلي حد يفكرك إنك مميزة وإن وجودك فارق وإن أحلامك مهمة. متقارنيش نفسك بحد، وكل واحد ليه وقته وطريقه. افتخري بنفسك وبكل محاولة بتعمليها حتى لو النتيجة لسه مجتش. فيه حاجات كتير حلوة مستنياكي بإذن الله، وأنا نفسي أشوف فرحتك بيها. ربنا يكرمك يا مهرتي ❤️`,
+`يا مهرتي وروح قلبي 💗
+حبيت أسيبلك الرسالة دي عشان تفتكري إنك محبوبة وغالية، وإن فيه حد بيحب يسمع منك ويعرف أخبارك ويشاركك تفاصيلك. وجودك مش حاجة عادية بالنسبالي، وإنتي ليكي مكانة خاصة في قلبي. ربنا يحفظك ويصون قلبك ويملأ حياتك بالسكينة والفرح والبركة. وخلي بالك من نفسك دايمًا يا حبيبتي، عشان إنتي غالية أوي عندي 🥹❤️`,
+`يا حبيبتي الجميلة 🌸
+أتمنى يومك يكون لطيف زي قلبك، وتسمعي خبر يفرحك وتحصلك حاجة حلوة تخليكي تبتسمي من قلبك. ولو اليوم مش ماشي زي ما توقعتي، متزعليش من نفسك ولا تحكمي على اليوم كله من موقف واحد. بكرة يوم جديد وفرصة جديدة، وربنا قادر يبدّل أي تعب بفرحة. أتمنى دايمًا أشوفك مطمنة ومبسوطة يا مهرتي ❤️`,
+`يا مهرتي يا سكر حياتي 🍬
+أنا بتبسط من أبسط تفاصيلك، ورسالة منك ممكن تغيّر مود يومي كله. بحب طريقتك لما بتحكي، وبحب ضحكتك وهزارك، وبحب حتى الحاجات اللي بتعمليها من غير ما تقصدي إنها تفرحني. وجودك له تأثير جميل عليا، وده شيء أنا مقدّره جدًا. ربنا يسعدك قد ما بتدخلي فرحة على قلبي، ويحفظك ليا من كل سوء 💗`,
+`مهرتي الجميلة 🥹
+نفسي دايمًا تحسي بالأمان والراحة، وتعرفي إن مش لازم تكوني قوية طول الوقت. عادي تتعبي، وعادي تحتاجي راحة، وعادي يكون عندك يوم مش أحسن حاجة. متضغطيش على نفسك عشان ترضي كل الناس، وافتكري إن راحتك مهمة. أنا بتمنالك قلب مطمئن وأيام هادية وحاجات كتير تفرحك. ربنا يقوّي قلبك ويكتبلك كل خير ❤️`,
+`يا أغلى الناس 💌
+ربنا يرزقك فرحة تنسيكي أي تعب، ويعوضك عن كل لحظة صعبة، ويفتحلك أبواب الخير من حيث لا تحتسبي. نفسي كل حاجة بتتمنيها تقرب منك واحدة واحدة، وكل دعوة بتدعيها ربنا يحققلك منها الخير. إنتي تستاهلي أحلى أيام وأجمل مفاجآت، وأتمنى دايمًا أكون من الناس اللي بيشاركوا معاكي لحظاتك الحلوة. بحبك يا مهرتي 💗`,
+`يا مهرتي الشقية 😂🐥
+أنا بحب هزارنا وكلامنا وتفاصيلنا اللي يمكن تبان عادية لغيرنا، لكنها عندي ذكريات غالية. بحب لما نكون بنتكلم وننسى الوقت، ولما نضحك على موقف ونفضل نفتكره بعدين. الحاجات دي بتخلّي علاقتنا ليها طعم خاص عندي. نفسي نفضل نخلق ذكريات أجمل وأجمل، وربنا يديم الضحكة بينا ويخلّي أيامك كلها حلوة ❤️`,
+`يا مهرة يا نور عيني ❤️
+أتمنى أيامك يكون فيها راحة أكتر وقلق أقل، ونجاح يفرحك، وناس تحبلك الخير بصدق. أتمنى كل حاجة بتتعبي عشانها تلاقي نتيجتها الحلوة، وكل حاجة بتدعي بيها ربنا يرزقك منها الخير. متنسيش إنك تستاهلي كل حاجة جميلة، وإنك لازم تفرحي بنفسك وبكل خطوة بتعمليها. ربنا يحفظك من كل شر يا حبيبتي 🥹`,
+`يا مهرتي الجميلة 🌸
+متنسيش تدي لنفسك حقها في الراحة والفرحة. إنتي مش مطالبة تكوني مشغولة طول الوقت ولا تنجزي كل حاجة مرة واحدة. خدي وقت لنفسك، اعملي الحاجات اللي بتحبيها، وافتكري إن راحتك مهمة زي أي حاجة تانية. نفسي أشوفك دايمًا هادية ومبسوطة وقلبك مرتاح. ربنا يرزقك كل ده ويزيدك من فضله 💕`,
+`يا حبيبتي ❤️
+وجودك بيفكرني إن التفاصيل الصغيرة ممكن تكون سبب في سعادة كبيرة. شكرًا على كل ضحكة وكل لحظة حلوة وكل مرة شاركتيني فيها حاجة من يومك. يمكن مش بقولك الكلام ده كل مرة، بس أنا بقدّر وجودك واهتمامك جدًا. أتمنى أقدر أفرحك زي ما وجودك بيفرحني، وربنا يجعل أيامك كلها خير ورضا وطمأنينة 💗`,
+`يا مهرتي يا قمر 🌙
+أتمنى لما تيجي تنامي تكوني مطمنة، وتسيبي هموم اليوم لربنا، وتفتكري إن مش كل حاجة لازم تتحل في نفس اللحظة. ساعات الراحة والنوم الكويس بيفرقوا أكتر مما نتخيل. ربنا يهدي بالك ويبعد عنك التفكير اللي بيتعبك، ويصحّيكي على يوم أجمل وخبر يفرح قلبك. تصبحين على خير يا حبيبتي ❤️`,
+`يا مهرة 🥹💗
+بتمنالك القوة إنك تعدّي الأيام الصعبة، والثقة إنك تقدري تتعلمي وتنجحي، والصبر لحد ما توصلي للحاجات اللي نفسك فيها. متنسيش إن كل إنجاز كبير بدأ بخطوات صغيرة، وإنك مش محتاجة تستعجلي على نفسك. أنا بتمنى أشوفك فخورة بنفسك وبكل اللي وصلتي له. ربنا يسندك ويكرمك ويحفظ قلبك ❤️`,
+`يا أجمل إنسانة ❤️
+لو في يوم حسيتي إنك مش قادرة تعملي كل حاجة، افتكري إن مش لازم تعملي كل حاجة مرة واحدة. خطوة صغيرة كل يوم ممكن تعمل فرق كبير مع الوقت. ادي لنفسك فرصة تتعلمي وتغلطي وتصلحي وتنجحي، ومتكونيش قاسية على نفسك. إنتي تستاهلي تشجعي نفسك وتفرحي بتقدمك. ربنا يسهّل طريقك يا مهرتي 💕`,
+`يا مهرتي يا حتة من قلبي 💌
+نفسي تفضلي دايمًا محاطة بالخير والناس اللي بتفرح لفرحتك بصدق، واللي بتشجعك وقت ما تحتاجي تشجيع. أتمنى متحسيش أبدًا إنك لوحدك في أحلامك، وإنك تلاقي دايمًا سبب يخليكي تكمّلي. ربنا يرزقك صحبة طيبة وقلب مطمئن وأيام مباركة. بحبك يا مهرة، وخلي بالك من نفسك ❤️`,
+`يا مهرتي الشقية 😂❤️
+حتى هزارك ليه مكان مخصوص عندي، وبحب اللحظات اللي بننسى فيها الدنيا ونضحك من قلبنا. بحب لما تعملي حاجة عفوية وتخليني أضحك، وبحب إننا نقدر نتكلم في حاجات كتير ونشارك بعض تفاصيلنا. نفسي نفضل نحافظ على الحاجات الجميلة دي، ونفضل نعرف نفرح بعض حتى بأبسط حاجة. ربنا يديم علينا الحاجات الحلوة ويحفظك ويسعدك يا حبيبتي 💗`,
+`يا مهرة قلبي 💗
+كل مرة بدعيلك فيها، بتمنى ربنا يختارلك الأحسن حتى لو مش هو نفس اللي كنتي متخيلاه. ربنا يفتحلك أبواب الخير، ويبعد عنك الشر، ويكتبلك مستقبل يفرح قلبك. أتمنى كل تعب تتعبيه يكون وراه نتيجة حلوة، وكل حلم عندك تلاقيه بيقرب منك يوم بعد يوم. إنتي تستاهلي كل خير يا مهرتي ❤️`,
+`يا حبيبتي الجميلة 🌷
+أتمنى تفضلي فخورة بنفسك وبكل حاجة بتتعلميها، ومتقلليش أبدًا من أي مجهود بتبذليه. حتى لو محدش شاف تعبك، ربنا عالم بيه، وإن شاء الله يكرمك ويعوضك خير. نفسي أشوفك بتنجحي وتفرحي وتحققي الحاجات اللي بتتكلمي عنها بحماس. أنا دايمًا بتمنالك النجاح والفرحة، وربنا يحققلك اللي فيه الخير 💕`,
+`يا مهرتي يا دنيتي ❤️
+لو الرسالة دي خلتك تبتسمي ولو ثانية، يبقى أنا مبسوط. إنتي تستاهلي كل كلام حلو وكل دعوة صادقة وكل لحظة فرح. بحب وجودك وبحب إن فيه بينا تفاصيل وذكريات خاصة بينا، ونفسي نفضل نضيف ليها حاجات أجمل مع الوقت. ربنا يحفظك ويجعل قلبك مليان رضا وراحة والسعادة، ويخلّي ضحكتك منورة أيامك دايمًا 💗`,
+`يا مهرتي وروحي 🥹
+بدعيلك ربنا يكتبلك الخير حيث كان، ويرضّي قلبك بيه، ويحفظك من كل شر. ربنا يسهّل عليكي أي حاجة صعبة، ويبعد عنك كل قلق، ويرزقك راحة بال تخلّيكي مطمنة. عايزك تفتكري إنك غالية جدًا، وإن وجودك في حياتي حاجة جميلة بقدّرها. خليكي دايمًا بخير يا حبيبتي، وربنا يسعد قلبك ❤️`,
+`يا أجمل هدية في أيامي 💌
+أتمنى أكون سبب في ابتسامة، وسند وقت اللزوم، وشخص يسمعك باهتمام ويهتم بتفاصيلك. نفسي لما تحكيلي عن حاجة تكوني عارفة إني مهتم أسمعك، ولما تفرحي ألاقي نفسي بفرح معاكي. ربنا يديم بينا الخير والرحمة والتفاهم، ويكتبلك السعادة في كل خطوة. بحبك يا مهرتي 💗`,
+`يا مهرتي يا قمر قلبي 🌙❤️
+أتمنى كل حلم جواكي يكبر ويقرب، وكل خوف يتحول لثقة، وكل تعب ييجي بعده فرح. متنسيش إنك تقدري توصلي لحاجات كتير، وإن كل يوم بتتعلمي فيه حاجة جديدة هو خطوة لقدام. أنا نفسي أشوفك مبسوطة وفخورة بنفسك، وربنا يباركلك في وقتك ومجهودك ويحققلك اللي فيه الخير ليكي يا حبيبتي 💕`,
+`يا مهرتي الحلوة 🥹❤️
+أنا ممتن لكل لحظة ضحكنا فيها ولكل مرة حسّيت فيها إن وجودك مفرّحني. ممتن لكل كلمة حلوة وكل اهتمام وكل تفصيلة صغيرة بينا. أتمنى أكون دايمًا شخص يضيف لحياتك فرحة وراحة، مش ضغط أو زعل. ربنا يحفظك ويقوّيكي في كل خطوة ويجعل قلبك مطمئن وأيامك مليانة بركة 🥹💕`,
+`يا مهرة يا نور أيامي 🌷
+أتمنى دايمًا تلاقي سبب تبتسمي عشانه، حتى لو كان صغير زي رسالة حلوة أو موقف لطيف أو حاجة كنتي مستنياها. متخليش الأيام الصعبة تنسيكي إن لسه فيه حاجات جميلة كتير جاية. إنتي تستاهلي الفرحة والاهتمام والكلام الحلو، وتحققي كل حلم نفسك فيه. ربنا يطمن قلبك ويكتبلك فوق ما تتمني ❤️`,
+`حبيبتي ومهرتي 🐥💗
+أحلى حاجة عندي إننا نشارك بعض الحاجات الصغيرة قبل الكبيرة. إنك تحكيلي عن يومك أو تقوليلي موقف حصل معاكي أو حتى تبعتيلي كلمة عادية، كل ده بيبقى ليه قيمة عندي. ربنا يديم الود بينا ويحفظك من كل شر يا أغلى الناس 🥹`,
+`يا أجمل صدفة في حياتي ❤️
+وجودك خلاني أعرف إن فيه أشخاص ممكن يخلّوا أبسط التفاصيل مميزة. بتمنالك أيام كلها خير، ونجاح في كل حاجة بتسعي ليها، وراحة بال تخليكي تنامي وإنتي مطمنة. بحبك يا مهرتي 💕`,
+`يا مهرة قلبي 🍓
+خدي يومك خطوة خطوة وادي لنفسك فرصة ترتاحي. مش لازم كل حاجة تحصل بسرعة، وأنا مؤمن إنك تقدري توصلي لحاجات كتير نفسك فيها. ربنا هيكرمك على تعبك ومحاولاتك، وخليكي دايمًا واثقة في نفسك ❤️`,
+`مهرتي حبيبتي 💌
+بحب إننا نخلق ذكريات من أبسط المواقف وبحب لما نضحك على حاجة تافهة. نفسي نفضل نضيف لذكرياتنا حاجات حلوة كتير ونعرف نضحك ونفهم بعض. ربنا يديم بينا المودة والرحمة 💗`,
+`يا حبيبة قلبي 🥹❤️
+ربنا يعلم إني بتمنالك كل خير، مش بس النهارده لكن في كل يوم. بتمنى أشوفك ناجحة ومبسوطة ومحققة كل حاجة نفسك فيها، وأشوف تعبك بيتحول لفرحة وفخر. تفضلي دايمًا بخير يا مهرتي 💞`,
+`يا أجمل مهرة في الدنيا 😂💕
+تستاهلي حد يفكرك إنك مميزة وإن وجودك فارق وإن أحلامك مهمة. متقارنيش نفسك بحد، وكل واحد ليه وقته وطريقه. ربنا يكرمك يا مهرتي ❤️`,
+`يا مهرتي وروح قلبي 💗
+وجودك مش حاجة عادية بالنسبالي، وإنتي ليكي مكانة خاصة في قلبي. ربنا يحفظك ويصون قلبك ويملأ حياتك بالسكينة والفرح والبركة 🥹❤️`,
+`يا حبيبتي الجميلة 🌸
+أتمنى يومك يكون لطيف زي قلبك، وتسمعي خبر يفرحك وتحصلك حاجة حلوة تخليكي تبتسمي من قلبك. بكرة يوم جديد وفرصة جديدة وربنا قادر يبدّل أي تعب بفرحة ❤️`,
+`يا مهرتي يا سكر حياتي 🍬
+وجودك له تأثير جميل عليا، وده شيء أنا مقدّره جدًا. ربنا يسعدك قد ما بتدخلي فرحة على قلبي ويحفظك ليا من كل سوء 💗`,
+`يا مهرتي الحلوة 🥹❤️
+دي آخر رسالة في المجموعة دي، بس مش آخر مرة هقولك إنك غالية. الخمسين رسالة دول مجرد شوية كلام من حاجات كتير نفسي أقولها ليكي. ربنا يحفظك ويخلّي قلبك مطمن، ويكتبلك أيام مليانة خير، ويخلّي بينا دايمًا مودة وصدق واحترام. بحبك يا مهرة، وربنا يسعد قلبك على طول 💗`
+];
+const startDate=new Date(2026,9,16);
+function dayNumber(d){return Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000)}
+function getDailyIndex(){return Math.max(0,dayNumber(new Date())-dayNumber(startDate))%messages.length}
+function getDateKey(){const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
+function render(){const current=getDailyIndex();document.getElementById("message").textContent=messages[current];document.getElementById("date").textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗
+"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"})}
+async function refreshReadStatus(){const status=document.getElementById("readStatus"),herButton=document.getElementById("herRead"),myButton=document.getElementById("myRead"),dateKey=getDateKey();try{const[herDoc,myDoc]=await Promise.all([getDoc(doc(db,"message_reads",`${dateKey}_her`)),getDoc(doc(db,"message_reads",`${dateKey}_me`))]);const herRead=herDoc.exists()&&herDoc.data().read===true,myRead=myDoc.exists()&&myDoc.data().read===true;herButton.textContent=herRead?"❤️ مهرتي سجّلت قراءة رسالة النهارده ✅":"أنا مهرة ❤️ قريت الرسالة";myButton.textContent=myRead?"💙 أحمد سجّل قراءة رسالة النهارده ✅":"أنا أحمد 💙 قريت الرسالة";herButton.disabled=herRead;myButton.disabled=myRead;status.textContent="حالة قراءة رسالة النهارده 💌
+مهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"
+أحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة")}catch(error){console.error(error);status.textContent="مش قادر أجيب حالة القراءة دلوقتي. جرّب تحدّث الصفحة."}}
+async function markAsRead(person,buttonId){const button=document.getElementById(buttonId);if(button.disabled)return;const originalText=button.textContent;button.disabled=true;button.textContent="جاري التسجيل... ❤️";try{const current=getDailyIndex(),dateKey=getDateKey();await setDoc(doc(db,"message_reads",`${dateKey}_${person}`),{person,messageNumber:current+1,read:true,dateKey,updatedAt:serverTimestamp()});button.classList.remove("pop");void button.offsetWidth;button.classList.add("pop");await refreshReadStatus()}catch(error){console.error(error);button.textContent=originalText;button.disabled=false;alert("التسجيل ما تمش. اتأكد من الإنترنت وإعدادات Firebase.")}}
+document.getElementById("herRead").addEventListener("click",()=>markAsRead("her","herRead"));document.getElementById("myRead").addEventListener("click",()=>markAsRead("me","myRead"));
 
-    .memory-days span {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #a63a5a;
-    }
+let touchCount=0,lastTouchTime=0;const heartEmojis=["💗","💖","💜","💕","💘","❤️","🩷"],sparkleEmojis=["✨","⭐","✦","💫","🌟","✧"];function randomItem(array){return array[Math.floor(Math.random()*array.length)]}
+function createTouchEffect(x,y){const now=Date.now();if(now-lastTouchTime<80)return;lastTouchTime=now;for(let i=0;i<4;i++){const heart=document.createElement("span");heart.className="touch-heart";heart.textContent=randomItem(heartEmojis);heart.style.setProperty("--x",x+"px");heart.style.setProperty("--y",y+"px");heart.style.setProperty("--size",14+Math.random()*16+"px");heart.style.setProperty("--dx",Math.random()*120-60+"px");heart.style.setProperty("--dy",-50-Math.random()*90+"px");heart.style.setProperty("--rotation",Math.random()*60-30+"deg");document.body.appendChild(heart);setTimeout(()=>heart.remove(),1200)}for(let i=0;i<3;i++){const sparkle=document.createElement("span");sparkle.className="touch-sparkle";sparkle.textContent=randomItem(sparkleEmojis);sparkle.style.setProperty("--x",x+"px");sparkle.style.setProperty("--y",y+"px");sparkle.style.setProperty("--size",10+Math.random()*12+"px");sparkle.style.setProperty("--dx",Math.random()*80-40+"px");sparkle.style.setProperty("--dy",Math.random()*80-40+"px");document.body.appendChild(sparkle);setTimeout(()=>sparkle.remove(),800)}const ripple=document.createElement("span");ripple.className="touch-ripple";ripple.style.setProperty("--x",x+"px");ripple.style.setProperty("--y",y+"px");document.body.appendChild(ripple);setTimeout(()=>ripple.remove(),600);touchCount++;if(touchCount%15===0)showTouchSurprise()}
+document.addEventListener("pointerdown",event=>{if(!event.isPrimary||event.target.closest("#touchSurprise"))return;createTouchEffect(event.clientX,event.clientY)});
+const surprise=document.getElementById("touchSurprise");function showTouchSurprise(){surprise.classList.add("show")}document.getElementById("closeSurprise").addEventListener("click",()=>surprise.classList.remove("show"));surprise.addEventListener("click",event=>{if(event.target===surprise)surprise.classList.remove("show")});
+function createPetal(){if(document.hidden)return;const petal=document.createElement("span");petal.className="falling-petal";petal.textContent=randomItem(["🌸","🌷","🌺"]);petal.style.setProperty("--left",Math.random()*100+"vw");petal.style.setProperty("--size",12+Math.random()*12+"px");petal.style.setProperty("--duration",7+Math.random()*6+"s");petal.style.setProperty("--drift",Math.random()*120-60+"px");document.body.appendChild(petal);setTimeout(()=>petal.remove(),14000)}
+for(let i=0;i<6;i++)setTimeout(createPetal,i*700);setInterval(createPetal,1800);
+async function startApp(){render();try{await signInAnonymously(auth);await refreshReadStatus();listenToSharedGame();setRole(gameRole)}catch(error){console.error(error);document.getElementById("readStatus").textContent="تعذر الاتصال بقاعدة البيانات. راجع إعدادات Firebase."}}startApp();
+function scheduleMidnightUpdate(){const now=new Date(),tomorrow=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,1);setTimeout(async()=>{render();await refreshReadStatus();scheduleMidnightUpdate()},tomorrow-now)}scheduleMidnightUpdate();
 
-    .memory-units {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      direction: ltr;
-    }
+// لعبة مشتركة بين الجهازين عبر Firestore
+const gameBanks={
+ light:[
+ "إيه أكتر حاجة بتضحكك؟","لو عندنا يوم فاضي، تحب نعمل إيه؟","إيه أكتر أكلة بتحبها؟","إيه أغرب عادة عندك؟","لو هتختار أغنية لمودك دلوقتي، هتكون إيه؟","إيه أكتر فيلم أو مسلسل بتحبه؟","إيه الحاجة الصغيرة اللي بتفرحك؟","لو هنسافر يوم واحد، تختار نروح فين؟","إيه أكتر إيموجي بتستخدمه؟","مين فينا بيضحك أسرع؟","إيه ذكرى مضحكة مش بتنساها؟","لو عندك قوة خارقة ليوم، تختار إيه؟",
+ "إيه أكتر مشروب بتحبه؟","بتحب الصبح أكتر ولا السهر؟","إيه لون بتحس إنه شبه شخصيتك؟","لو هتختار حيوان أليف، تختار إيه؟","إيه أكتر لعبة كنت بتحبها وإنت صغير؟","بتفضل البحر ولا الأماكن الخضرا؟","إيه أكتر حاجة بتعملها لما تكون زهقان؟","لو هتعيش يوم في فيلم، تختار فيلم إيه؟","إيه أكتر ريحة بتحبها؟","بتحب المفاجآت ولا التخطيط؟","إيه أكتر تطبيق بتستخدمه؟","لو هتتعلم مهارة في يوم واحد، تختار إيه؟",
+ "إيه أكتر وقت في اليوم بتحبه؟","لو هتطلب أكلة دلوقتي، هتطلب إيه؟","إيه حاجة بسيطة نفسك تشتريها؟","بتفضل الجو البارد ولا الحر؟","إيه أكتر مادة أو موضوع كان ممتع بالنسبالك؟","لو عندك تذكرة سفر مجانية، تختار أنهي بلد؟","إيه أكتر موقف بيخليك تضحك من قلبك؟","بتحب الصور العفوية ولا المتظبطة؟","إيه أكتر شخصية كرتونية بتحبها؟","لو هتختار اسم لفريقنا، هيكون إيه؟","إيه تحدي لطيف نفسك نجربه سوا؟","إيه حاجة جديدة اكتشفت إنك بتحبها مؤخرًا؟"
+ ],
+ feelings:[
+ "إيه أكتر تصرف بيخليك تحس إنك متقدّر؟","إيه أكتر حاجة بتحبها في شخصية التاني؟","إمتى بتحس إن يومك بقى أحسن؟","إيه معنى الاهتمام بالنسبالك؟","إيه ذكرى بينا بتحب تفتكرها؟","إيه حاجة بسيطة ممكن تحسّن يومك؟","إيه أكتر صفة بتقدّرها في الناس؟","إيه طريقة التعبير اللي بتوصلك الاهتمام؟","إيه حاجة نفسك نعملها سوا قريب؟","إيه أكتر وقت بتحب نتكلم فيه؟","إيه حاجة اتعلمتها من التاني؟","إيه أكتر حاجة بتخليك تحس بالراحة؟",
+ "إيه نوع الكلام اللي بيشجعك لما تكون متضايق؟","إيه تصرف صغير ممكن يفرق معاك في يوم صعب؟","إمتى بتحس إن اللي قدامك بيسمعك بجد؟","إيه أكتر حاجة بتخليك تثق في شخص؟","إيه ذكرى بسيطة بينا ليها مكانة عندك؟","إيه أكتر حاجة بتحب نشاركها مع بعض؟","لما تكون مبسوط، بتحب تحكي فورًا ولا بعدين؟","إيه اللي يخليك تحس إن وقتنا سوا مميز؟","إيه أكتر صفة بتحبها في طريقة كلامنا؟","إيه حاجة نفسك أفتكرها عنك دايمًا؟","إيه شكل الدعم اللي بتحبه وقت الضغط؟","إيه أكتر موقف حسّسك إننا فاهمين بعض؟",
+ "إيه حاجة بتخليك تحس بالأمان في الكلام؟","إيه عادة لطيفة تحب تبقى بينا؟","إيه أكتر حاجة بتقدّرها في الصراحة؟","إيه نوع الخروجات اللي بتحسسك بالسعادة؟","إيه حاجة نفسك أسمعك بتحكي عنها أكتر؟","إيه أكتر مجاملة بتفضل فاكرها؟","إيه تفصيلة صغيرة ممكن تخلّي يومك أحلى؟","إيه أكتر حاجة بتحبها في قضاء الوقت مع شخص قريب؟","إزاي بتحب نحل أي سوء تفاهم بينا؟","إيه حاجة شايف إننا بنعملها كويس سوا؟","إيه ذكرى تتمنى نضيف زيها لذكرياتنا؟","إيه أكتر حاجة بتخليك تحس إنك مفهوم؟"
+ ],
+ deep:[
+ "إيه قيمة مستحيل تتنازل عنها؟","إيه حلم نفسك تحققه وليه؟","لما تواجه قرار صعب، بتفكر إزاي؟","إيه تجربة غيرت طريقة تفكيرك؟","إيه أكتر حاجة نفسك الناس تفهمها عنك؟","بالنسبالك، إيه معنى الثقة؟","إيه صفة نفسك تطورها في نفسك؟","إيه اللي بيساعدك تعدّي الأيام الصعبة؟","إيه حاجة بقيت تقدرها مع الوقت؟","إيه تعريفك للصداقة الحقيقية؟","إيه قرار فخور إنك خدته؟","إيه حاجة نفسك تتعلمها عن نفسك؟",
+ "إيه مبدأ بتحاول تلتزم بيه حتى لو كان صعب؟","إيه درس اتعلمته من غلطة قديمة؟","إزاي بتعرف إنك محتاج تاخد وقت لنفسك؟","إيه الفرق عندك بين النجاح والراحة؟","إيه حاجة كنت شايفها مهمة زمان واتغير رأيك فيها؟","إيه صفة بتتمنى الناس تلاحظها فيك؟","لما تختلف مع حد، إيه أهم حاجة بتحاول تحافظ عليها؟","إيه معنى إن الشخص يكون مسؤول عن اختياراته؟","إيه خوف أو قلق نفسك تتعامل معاه بشكل أفضل؟","إيه تجربة علمتك الصبر؟","إيه حاجة بتدي لحياتك معنى؟","إيه قرار صغير ممكن يغيّر مسار يومك للأحسن؟",
+ "إيه أكتر حاجة بتساعدك تفهم نفسك؟","إيه نوع الأشخاص اللي بتتعلم منهم؟","إيه اعتقاد عندك اتغير مع مرور الوقت؟","إيه حدود مهمة بتحب الناس تحترمها؟","إيه معنى التوازن بين الطموح والراحة بالنسبالك؟","إيه حاجة نفسك تكون أشجع في تجربتها؟","إيه موقف خلاك تعيد التفكير في أولوياتك؟","إزاي بتتعامل مع عدم اليقين؟","إيه صفة بتعتبرها أساس أي علاقة صحية؟","إيه حاجة تحب تفتكرها لما تواجه فترة صعبة؟","إيه إنجاز صغير كان ليه تأثير كبير عليك؟","إيه نوع الأثر الطيب اللي تتمنى تسيبه في حياة الناس؟"
+ ]
+};
+const gameRef=doc(db,"shared_games","zozo_know_game");
+const gameRoleKey="zozo_know_game_role";
+let gameRole=localStorage.getItem(gameRoleKey)||"";
+let sharedGame=null;
+const gameEl=id=>document.getElementById(id);
+const gameSetup=gameEl("gameSetup"),gamePlay=gameEl("gamePlay"),gameDone=gameEl("gameDone");
+let chosenLevel="light";
+function gameEscape(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function setRole(role){gameRole=role;localStorage.setItem(gameRoleKey,role);gameEl("roleMe").classList.toggle("selected",role==="me");gameEl("roleHer").classList.toggle("selected",role==="her");gameEl("roleStatus").textContent=role==="me"?"تم اختيار: أحمد على الجهاز ده 💙":"تم اختيار: هي على الجهاز ده 💗";renderSharedGame()}
+function shuffleGame(list){const a=[...list];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function chooseFreshGameQuestions(level,usedQuestions={}){const bank=gameBanks[level]||[];let used=Array.isArray(usedQuestions[level])?usedQuestions[level]:[];let available=bank.filter(q=>!used.includes(q));if(available.length<6){used=[];available=[...bank]}const selected=shuffleGame(available).slice(0,6);return{questions:selected,usedQuestions:{...usedQuestions,[level]:[...used,...selected]}}}
+function renderSharedGame(){
+ gameEl("roleMe").classList.toggle("selected",gameRole==="me");gameEl("roleHer").classList.toggle("selected",gameRole==="her");
+ if(!sharedGame||sharedGame.status==="done"){
+  gamePlay.classList.add("game-hidden");gameDone.classList.toggle("game-hidden",!sharedGame||sharedGame.status!=="done");gameSetup.classList.toggle("game-hidden",!!sharedGame&&sharedGame.status==="done");
+  if(sharedGame&&sharedGame.status==="done"){gameEl("gameSummary").innerHTML=sharedGame.answers.map((a,i)=>`<div class="game-entry"><strong>${a.who} • ${i+1}</strong><div>${gameEscape(a.question)}</div><div>${gameEscape(a.answer)}</div></div>`).join("");gameEl("newGame").textContent="ابدأوا جولة جديدة 🎀"}
+  else gameEl("newGame").textContent="العبوا جولة جديدة";
+  return;
+ }
+ gameSetup.classList.add("game-hidden");gameDone.classList.add("game-hidden");gamePlay.classList.remove("game-hidden");
+ const turn=sharedGame.turn||0,answerer=turn%2===0?"her":"me",myTurn=gameRole===answerer;
+ gameEl("gameTurn").textContent=answerer==="her"?"💗 السؤال ليها":"💙 السؤال ليك";
+ gameEl("gameQuestion").textContent=sharedGame.questions[turn]||"";
+ gameEl("gameProgress").textContent=`السؤال ${turn+1} من 6 • ${myTurn?"دورك، اكتب إجابتك":"مستنيين إجابة الطرف التاني..."}`;
+ gameEl("gameLiveAnswers").innerHTML=(sharedGame.answers||[]).map((a,i)=>`<div class="game-entry"><strong>${gameEscape(a.who)} • ${i+1}</strong><div>${gameEscape(a.question)}</div><div>${gameEscape(a.answer)}</div></div>`).join("");
+ gameEl("gameAnswer").disabled=!myTurn;gameEl("gameAnswer").placeholder=myTurn?"اكتب إجابتك هنا...":"مش دورك دلوقتي، هتظهر الإجابة هنا بعد ما الطرف التاني يجاوب";
+ gameEl("gameAnswer").value="";gameEl("saveAnswer").disabled=true;gameEl("saveAnswer").textContent=myTurn?"احفظ الإجابة وكمل":"في انتظار الإجابة...";
+}
+function listenToSharedGame(){onSnapshot(gameRef,snap=>{sharedGame=snap.exists()?snap.data():null;renderSharedGame()},error=>{console.error("Shared game listener:",error);gameEl("gameProgress").textContent="تعذر تحميل اللعبة المشتركة. راجع صلاحيات Firestore."})}
+gameEl("roleMe").addEventListener("click",()=>setRole("me"));gameEl("roleHer").addEventListener("click",()=>setRole("her"));
+document.querySelectorAll(".level-btn[data-level]").forEach(btn=>btn.addEventListener("click",()=>{chosenLevel=btn.dataset.level;document.querySelectorAll(".level-btn[data-level]").forEach(b=>b.classList.toggle("selected",b===btn))}));
+gameEl("startGame").addEventListener("click",async()=>{
+ if(!gameRole){gameEl("roleStatus").textContent="اختار الأول أنت مين على الجهاز ده ❤️";return}
+ const button=gameEl("startGame");button.disabled=true;button.textContent="بنجهز الجولة...";
+ try{await runTransaction(db,async tx=>{const snap=await tx.get(gameRef);if(snap.exists()&&snap.data().status==="active")return;const previous=snap.exists()?snap.data():{};const picked=chooseFreshGameQuestions(chosenLevel,previous.usedQuestions||{});tx.set(gameRef,{status:"active",level:chosenLevel,questions:picked.questions,usedQuestions:picked.usedQuestions,answers:[],turn:0,createdAt:serverTimestamp(),updatedAt:serverTimestamp()})})}
+ catch(error){console.error(error);alert("مش قادرين نبدأ الجولة. غالباً محتاجين نراجع صلاحيات Firestore للمجموعة shared_games.")}
+ finally{button.disabled=false;button.textContent="ابدأوا اللعب 🎀"}
+});
+gameEl("gameAnswer").addEventListener("input",()=>{gameEl("saveAnswer").disabled=!gameEl("gameAnswer").value.trim()||!sharedGame||gameRole!==(sharedGame.turn%2===0?"her":"me")});
+gameEl("saveAnswer").addEventListener("click",async()=>{
+ const answer=gameEl("gameAnswer").value.trim();if(!answer||!sharedGame)return;
+ const button=gameEl("saveAnswer");button.disabled=true;button.textContent="جاري حفظ الإجابة...";
+ try{await runTransaction(db,async tx=>{const snap=await tx.get(gameRef);if(!snap.exists())throw new Error("No active game");const data=snap.data(),turn=data.turn||0,answerer=turn%2===0?"her":"me";if(data.status!=="active"||answerer!==gameRole||turn!==sharedGame.turn)throw new Error("Not your turn");const answers=[...(data.answers||[]),{who:answerer==="her"?"هي":"أحمد",question:data.questions[turn],answer}];tx.update(gameRef,{answers,turn:turn+1,status:turn+1>=data.questions.length?"done":"active",updatedAt:serverTimestamp()})})}
+ catch(error){console.error(error);alert("الإجابة ما اتحفظتش. اتأكد من الاتصال وإن الدور بتاعك.");renderSharedGame()}
+});
+gameEl("newGame").addEventListener("click",()=>{gameDone.classList.add("game-hidden");gameSetup.classList.remove("game-hidden");sharedGame=null;gameEl("gameAnswer").value=""});
 
-    .memory-unit {
-      background: #fff5f8;
-      border-radius: 14px;
-      padding: 10px 6px;
-      font-size: 0.78rem;
-      color: #8c4a5e;
-      font-weight: 600;
-    }
+</script>
 
-    .memory-unit b {
-      display: block;
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #b81d48;
-      margin-bottom: 2px;
-    }
+<script>
+(()=>{const c=document.getElementById("galaxyCanvas"),x=c.getContext("2d");let w,h,s=[],raf;function resize(){w=innerWidth;h=innerHeight;c.width=w*devicePixelRatio;c.height=h*devicePixelRatio;c.style.width=w+"px";c.style.height=h+"px";x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);s=Array.from({length:Math.min(90,Math.floor(w/6))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.6+.3,v:Math.random()*.2+.03,p:Math.random()*6.28,col:Math.random()>.5?"255,130,215":"181,145,255"}))}function draw(){x.clearRect(0,0,w,h);let t=Date.now()*.001;s.forEach(a=>{let g=.35+.65*(Math.sin(t*1.5+a.p)+1)/2;x.beginPath();x.arc(a.x,a.y,a.r,0,6.28);x.fillStyle=`rgba(${a.col},${g})`;x.shadowBlur=7;x.shadowColor=`rgba(${a.col},.7)`;x.fill();x.shadowBlur=0;a.y+=a.v;a.x+=Math.sin(t+a.p)*.06;if(a.y>h+3){a.y=-3;a.x=Math.random()*w}});raf=requestAnimationFrame(draw)}resize();draw();addEventListener("resize",resize);document.addEventListener("visibilitychange",()=>{if(document.hidden)cancelAnimationFrame(raf);else draw()})})();
+</script>
 
-    .memory-footer {
-      margin-top: 24px;
-      font-size: 0.9rem;
-      color: #8c4a5e;
-      direction: ltr;
-    }
+<script>
+const wheelChallenges=[
+{name:"❤️ تحديات الحب",items:["قولي 3 حاجات بتحبيها في شخصيتي ❤️","ابعتيلي رسالة حب من غير ما تستخدمي كلمة بحبك 💌","احكيلي أول موقف خلّاكي تبتسمي بسببي 🥹","اختاري أغنية تفكرك بيا وابعتيهالي 🎶","قوليلي أكتر تفصيلة صغيرة بتحبيها في علاقتنا 💗","اكتبيلي جملة نفسك تسمعيها مني دايمًا ❤️","قوليلي 5 أسباب بتخليكي مبسوطة معايا 🥰"]},
+{name:"😂 تحديات الضحك",items:["ابعتيلي أطرف إيموجي بيوصفني 😂","قلديني في رسالة صوتية لمدة 10 ثواني 🤣","احكيلي موقف محرج حصل معاكي 😂","اختاريلي اسم مضحك لمدة يوم كامل 😭","ابعتيلي صورة مضحكة من عندك","قولي نكتة ولازم تضحكيني 😂","اكتبي جملة رومانسية بطريقة كوميدية 🤣"]},
+{name:"🎁 المفاجآت",items:["اختاريلي مفاجأة صغيرة نعملها سوا 🎁","النهارده ليكي رسالة إضافية مني 💌","اختاري حاجة نفسك نعملها في أقرب فرصة ❤️","ليكي حق تختاري فيلم نتفرج عليه سوا 🍿","اطلبي مني حاجة بسيطة تفرحك النهارده 🥹","اختاري أغنية نعتبرها أغنيتنا الخاصة 🎶"]},
+{name:"📸 تحديات الصور",items:["ابعتيلي صورة لحاجة حواليكي وفكرتك بيا ❤️","صوري حاجة لونها وردي النهارده 🌸","ابعتيلي صورة لأجمل حاجة شفتيها النهارده 📸","اختاري صورة قديمة بتحبي ذكراها 💗","صوري حاجة بتعبّر عن مودك النهارده 🥰","ابعتيلي صورة لابتسامتك لو حابة ❤️"]},
+{name:"💌 رسائل خاصة",items:["اكتبيلي رسالة من 3 سطور عن يومك 💌","ابعتيلي كلمة واحدة بتوصف إحساسك دلوقتي","قوليلي حاجة نفسك تحكيهالي من زمان ❤️","اكتبيلي أمنية نفسك نحققها سوا 🥹","ابعتيلي رسالة كأننا لسه بنتعرف على بعض 😂","اكتبيلي عنوان لفصل جديد في حكايتنا 💗"]},
+{name:"🧠 أسئلة بينكم",items:[,"إيه أكتر ذكرى بينا بتحبيها؟","لو هنخرج يوم كامل، تحبي نروح فين؟","إيه أول حاجة لفتت نظرك فيا؟","إيه أكتر حاجة بتخلي يومك أحلى؟","لو تقدري تعيشي يوم من ذكرياتنا تاني، تختاري إيه؟","إيه حاجة جديدة نفسك نتعلمها سوا؟"]},
+{name:"🥰 تحديات رومانسية",items:["اختاريلي لقب جديد أدلعك بيه 🥰","ابعتيلي فويس تقولي فيه حاجة حلوة ❤️","اختاري معاد نخصصه لينا ونتكلم فيه من غير انشغال 💗","قوليلي مكان نفسك نزوره سوا 🌷","اختاري ذكرى نفسنا نعمل زيها تاني 🥹","ابعتيلي 3 قلوب كل قلب بلون مختلف واختاري معناه ❤️"]},
+{name:"✨ تحديات متنوعة",items:["اختاريلي تحدي بسيط أنفذه أنا المرة الجاية 😂","اتعلمي كلمة جديدة وقوليهالي","اختاري لون يمثل يومنا النهارده 🎨","احكيلي عن حاجة جديدة عرفتيها النهارده","اختاري موضوع نتكلم فيه لمدة 10 دقايق","اعملي قائمة من 3 حاجات نفسك تجربيها قريب ✨"]}
+];
+const wheel=document.getElementById("wheel"),spinButton=document.getElementById("spinButton"),wheelStatus=document.getElementById("wheelStatus"),wheelResult=document.getElementById("wheelResult"),challengeText=document.getElementById("challengeText"),wheelCount=document.getElementById("wheelCount");
+const WHEEL_STORAGE_KEY="zozo_wheel_progress_v1",WHEEL_DAILY_KEY="zozo_wheel_daily_v1";
+let wheelRotation=0,isSpinning=false;
+function cairoDateKey(){const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Africa/Cairo",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());const p={};parts.forEach(x=>p[x.type]=x.value);return p.year+"-"+p.month+"-"+p.day}
+function readWheelStorage(key,fallback){try{const value=localStorage.getItem(key);return value?JSON.parse(value):fallback}catch(e){return fallback}}
+function saveWheelStorage(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){console.error("Wheel storage error",e)}}
+function allWheelChallenges(){const all=[];wheelChallenges.forEach((category,categoryIndex)=>category.items.forEach((item,itemIndex)=>{if(typeof item==="string"&&item.trim())all.push({id:categoryIndex+"-"+itemIndex,categoryIndex,text:item})}));return all}
+const allChallenges=allWheelChallenges();
+function getUsedChallenges(){const used=readWheelStorage(WHEEL_STORAGE_KEY,[]);return Array.isArray(used)?used:[]}
+function updateWheelStatus(){const today=cairoDateKey(),daily=readWheelStorage(WHEEL_DAILY_KEY,null),used=getUsedChallenges(),remaining=allChallenges.filter(x=>!used.includes(x.id)).length;wheelCount.textContent="التحديات المتبقية: "+remaining+" من 50";if(daily&&daily.date===today){spinButton.disabled=true;spinButton.textContent="لفّيتي عجلة النهارده ❤️";wheelStatus.textContent="استني لحد بكرة بتوقيت القاهرة عشان تلفّي تاني 💗";wheelResult.classList.add("show");challengeText.textContent=daily.text;wheelCount.textContent="تحدي النهارده من قسم "+daily.category;if(daily.rotation!==undefined){wheel.style.transform="rotate("+daily.rotation+"deg)";wheelRotation=daily.rotation}return}spinButton.disabled=isSpinning;spinButton.textContent="لفّي العجلة 🎀";wheelStatus.textContent=remaining?"لسه ليكي لفة النهارده ✨":"خلصتوا كل التحديات الـ50! 💗";wheelResult.classList.remove("show");if(remaining===0){spinButton.disabled=true;spinButton.textContent="خلصت كل التحديات 💗"}}
+function spinWheel(){if(isSpinning)return;const today=cairoDateKey(),daily=readWheelStorage(WHEEL_DAILY_KEY,null);if(daily&&daily.date===today){updateWheelStatus();return}let used=getUsedChallenges(),available=allChallenges.filter(x=>!used.includes(x.id));if(available.length===0){used=[];available=allChallenges}const selected=available[Math.floor(Math.random()*available.length)],categoryIndex=selected.categoryIndex;isSpinning=true;spinButton.disabled=true;wheelStatus.textContent="العجلة بتلف... 🎀";wheelResult.classList.remove("show");const segmentCenter=categoryIndex*45+22.5;const target=(360-segmentCenter+360)%360;const extraTurns=5+Math.floor(Math.random()*3);wheelRotation+=extraTurns*360+((target-wheelRotation%360+360)%360);wheel.style.transform="rotate("+wheelRotation+"deg)";setTimeout(()=>{isSpinning=false;used.push(selected.id);saveWheelStorage(WHEEL_STORAGE_KEY,used);const category=wheelChallenges[categoryIndex].name;saveWheelStorage(WHEEL_DAILY_KEY,{date:today,id:selected.id,text:selected.text,category:category,rotation:wheelRotation});challengeText.textContent=selected.text;wheelCount.textContent="القسم: "+category+" • المتبقي: "+(allChallenges.length-used.length)+" من 50";wheelResult.classList.add("show");wheelStatus.textContent="دي مفاجأة النهارده! ❤️";spinButton.disabled=true;spinButton.textContent="لفّيتي عجلة النهارده ❤️"},5100)}
+spinButton.addEventListener("click",spinWheel);
+updateWheelStatus();
+setInterval(()=>{const daily=readWheelStorage(WHEEL_DAILY_KEY,null);if(!daily||daily.date!==cairoDateKey())updateWheelStatus()},15000);
+</script>
+<script>
+(()=>{const buttons=[...document.querySelectorAll(".nav-btn")];buttons.forEach(button=>button.addEventListener("click",()=>{const target=button.dataset.page;document.querySelectorAll(".page-section").forEach(page=>page.classList.toggle("active",page.id===target));buttons.forEach(item=>item.classList.toggle("active",item===button));window.scrollTo({top:0,behavior:"smooth"})}))})();
+</script>
 
-    .memory-sparkle {
-      color: #e64980;
-      margin-right: 4px;
-    }
-  </style>
-</head>
-<body>
-  <section class="page-section" id="memoriesPage">
-    <main class="memories-page">
-      <div class="intro-goose">🐴</div>
-      <h1 class="intro-title">مهرتي، يا أجمل حاجة في دنيتي</h1>
 
-      <h2 class="memories-title">♡ Our Memories ♡</h2>
-      <p class="memories-subtitle">Two moments... One beautiful story. ❤️</p>
+<script>
+(()=>{
+ const intro=document.getElementById("introScreen"),button=document.getElementById("goHomeButton");
+ let dodges=0,lastX=null,lastY=null;
+ button.addEventListener("click",()=>{
+  if(dodges<4){
+   dodges++;
+   if(button.parentElement!==document.body) document.body.appendChild(button);
+   button.style.position="fixed";
+   button.style.display="block";
+   button.style.width="auto";
+   button.style.minWidth="0";
+   button.style.maxWidth="150px";
+   button.style.padding="10px 14px";
+   button.style.fontSize="13px";
+   button.style.borderRadius="12px";
+   button.style.whiteSpace="nowrap";
+   button.style.zIndex="30000";
+   button.style.margin="0";
+   button.style.transition="left .24s ease,top .24s ease,padding .24s ease,font-size .24s ease,transform .24s ease";
+   button.style.transform="rotate("+(Math.random()*10-5)+"deg)";
+   const margin=14,w=button.offsetWidth,h=button.offsetHeight;
+   const vw=document.documentElement.clientWidth,vh=document.documentElement.clientHeight;
+   const maxX=Math.max(margin,vw-w-margin),maxY=Math.max(margin,vh-h-margin);
+   let x=margin,y=margin,tries=0;
+   do{
+    x=margin+Math.random()*Math.max(0,maxX-margin);
+    y=margin+Math.random()*Math.max(0,maxY-margin);
+    tries++;
+   }while(lastX!==null&&Math.hypot(x-lastX,y-lastY)<Math.min(140,Math.min(vw,vh)/3)&&tries<40);
+   lastX=x;lastY=y;
+   button.style.left=Math.round(x)+"px";
+   button.style.top=Math.round(y)+"px";
+   button.textContent=dodges===4?"خلاص ادخلي 😂":"امسكيـني 😂";
+   return;
+  }
+  button.remove();
+  document.body.classList.add("app-started");intro.classList.add("hide");setTimeout(()=>intro.remove(),700);
+ });
+})();
+</script>
 
-      <article class="memory-counter">
-        <h3 class="memory-label">
-          <span class="memory-icon">🐴</span>
-          أول مرة شوفت فيها مهرتي
-        </h3>
-        <p class="memory-date">10 أبريل 2024 · 4:00 مساءً</p>
-        <div class="memory-days" id="memoryYouDays">0 <span>Days</span></div>
-        <div class="memory-units">
-          <div class="memory-unit"><b id="memoryYouHours">00</b>Hours</div>
-          <div class="memory-unit"><b id="memoryYouMinutes">00</b>Minutes</div>
-          <div class="memory-unit"><b id="memoryYouSeconds">00</b>Seconds</div>
-        </div>
-      </article>
-
-      <article class="memory-counter">
-        <h3 class="memory-label">
-          <span class="memory-icon">💌</span>
-          أول مرة كلمت فيها مهرتي
-        </h3>
-        <p class="memory-date">11 يوليو 2026 · 11:00 مساءً</p>
-        <div class="memory-days" id="memoryIDays">0 <span>Days</span></div>
-        <div class="memory-units">
-          <div class="memory-unit"><b id="memoryIHours">00</b>Hours</div>
-          <div class="memory-unit"><b id="memoryIMinutes">00</b>Minutes</div>
-          <div class="memory-unit"><b id="memoryISeconds">00</b>Seconds</div>
-        </div>
-      </article>
-
-      <p class="memory-footer">
-        <span class="memory-sparkle">✦</span>
-        Every second since then has been a beautiful memory. ❤️
-      </p>
-    </main>
-  </section>
-
-  <script>
-    function updateCounter(startDate, daysId, hoursId, minutesId, secondsId) {
-      const start = new Date(startDate).getTime();
-      const now = new Date().getTime();
-      const diff = now - start;
-
-      if (diff < 0) return;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById(daysId).innerHTML = `${days} <span>Days</span>`;
-      document.getElementById(hoursId).textContent = String(hours).padStart(2, '0');
-      document.getElementById(minutesId).textContent = String(minutes).padStart(2, '0');
-      document.getElementById(secondsId).textContent = String(seconds).padStart(2, '0');
-    }
-
-    function updateAllCounters() {
-      // العداد الأول: 10 أبريل 2024 · 4:00 مساءً
-      updateCounter("2024-04-10T16:00:00", "memoryYouDays", "memoryYouHours", "memoryYouMinutes", "memoryYouSeconds");
-
-      // العداد الثاني: 11 يوليو 2026 · 11:00 مساءً
-      updateCounter("2026-07-11T23:00:00", "memoryIDays", "memoryIHours", "memoryIMinutes", "memoryISeconds");
-    }
-
-    setInterval(updateAllCounters, 1000);
-    updateAllCounters();
-  </script>
-</body>
-</html>
+<script>
+(()=>{
+ const memories=[
+  {prefix:"memorySee",timestamp:Date.parse("2024-04-10T16:00:00+02:00")},
+  {prefix:"memoryTalk",timestamp:Date.parse("2026-07-11T23:00:00+02:00")},
+  {prefix:"memoryLove",timestamp:Date.parse("2026-09-23T12:00:00+02:00")}
+ ];
+ const put=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=String(value).padStart(2,"0")};
+ function updateMemoryCounters(){
+  const now=Date.now();
+  memories.forEach(item=>{
+   let diff=Math.max(0,now-item.timestamp);
+   const days=Math.floor(diff/86400000);diff-=days*86400000;
+   const hours=Math.floor(diff/3600000);diff-=hours*3600000;
+   const minutes=Math.floor(diff/60000);diff-=minutes*60000;
+   const seconds=Math.floor(diff/1000);
+   const daysEl=document.getElementById(item.prefix+"Days");
+   if(daysEl)daysEl.innerHTML=days.toLocaleString("en-US")+" <span>Days</span>";
+   put(item.prefix+"Hours",hours);put(item.prefix+"Minutes",minutes);put(item.prefix+"Seconds",seconds);
+  });
+ }
+ updateMemoryCounters();setInterval(updateMemoryCounters,1000);
+})();
+</script>
+</body></html>
