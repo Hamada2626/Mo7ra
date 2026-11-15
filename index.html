@@ -49,7 +49,7 @@ body{scroll-behavior:smooth}
 .wheel-section h2{color:#ff9cdd;margin:5px 0 10px;font-size:24px;text-shadow:0 0 15px #ff4fc477}
 .wheel-sub{font-size:14px;line-height:1.9;margin-bottom:18px}
 .wheel-wrap{width:290px;height:290px;max-width:100%;margin:25px auto 20px;position:relative}
-.wheel{width:100%;height:100%;border-radius:50%;border:7px solid #d9b4ff;box-shadow:0 0 25px #b75cff55;position:relative;background:conic-gradient(#f5a6c8 0deg 45deg,#d9b5f2 45deg 90deg,#ffc8a8 90deg 135deg,#f7a9b8 135deg 180deg,#b9d8f5 180deg 225deg,#f4c5df 225deg 270deg,#c9b6f3 270deg 315deg,#f7d49a 315deg 360deg);transition:transform 5s cubic-bezier(.12,.72,.12,1);overflow:hidden}
+.wheel{width:100%;height:100%;border-radius:50%;border:7px solid #d9b4ff;box-shadow:0 0 25px #b75cff55;position:relative;background:conic-gradient(#f5a6c8 0.00deg 51.43deg,#d9b5f2 51.43deg 102.86deg,#ffc8a8 102.86deg 154.29deg,#f7a9b8 154.29deg 205.71deg,#b9d8f5 205.71deg 257.14deg,#f4c5df 257.14deg 308.57deg,#c9b6f3 308.57deg 360.00deg);transition:transform 5s cubic-bezier(.12,.72,.12,1);overflow:hidden}
 .wheel-label{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:62px;min-height:32px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;font-weight:800;line-height:1.35;color:#24112f;text-shadow:0 1px 0 #ffffff99;white-space:normal;overflow-wrap:anywhere;pointer-events:none;padding:2px}
 .wheel-pointer{position:absolute;z-index:3;top:-15px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid #ff8bd6;filter:drop-shadow(0 3px 3px #71334f55)}
 .wheel-center{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border:5px solid white;border-radius:50%;background:linear-gradient(135deg,#8d3bd1,#e34fae);color:white;display:flex;align-items:center;justify-content:center;font-size:25px;box-shadow:0 3px 12px #71334f44;pointer-events:none}
@@ -145,18 +145,7 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 .memory-footer{direction:ltr;color:#e9b8ed;font-size:14px;line-height:1.7;margin:16px 4px 3px;text-shadow:0 0 12px #d46cff55}
 .memory-sparkle{color:#f4b8ff;text-shadow:0 0 12px #d98aff}
 
-/* Gallery Page */
-.gallery-page{width:100%;max-width:500px;position:relative;z-index:2;text-align:center;padding:22px 16px;background:rgba(20,12,34,.88);border:1px solid #e1a0ff40;border-radius:26px;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);max-height:80vh;overflow-y:auto}
-.gallery-title{color:#ff9cdd;font-size:25px;margin:0 0 6px;text-shadow:0 0 15px #ff4fc477}
-.gallery-sub{font-size:13px;color:#c6a8df;margin:0 0 18px;line-height:1.7}
-.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.gallery-item{background:rgba(49,27,67,.72);border:1px solid #d58aff44;border-radius:16px;overflow:hidden;box-shadow:0 6px 18px #0006;transition:transform .25s ease}
-.gallery-item:hover{transform:translateY(-3px)}
-.gallery-item img,.gallery-item video{width:100%;height:175px;object-fit:cover;display:block;background:#12081f}
-.gallery-item.full-width{grid-column:1 / -1}
-.gallery-item.full-width video{height:220px}
-.gallery-caption{padding:8px 10px;font-size:12px;color:#ffeaff;line-height:1.5}
-.bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr));width:min(480px,calc(100% - 16px));gap:4px;padding:7px}
+.bottom-nav{grid-template-columns:repeat(3,minmax(0,1fr));width:min(440px,calc(100% - 16px));gap:4px;padding:7px}
 .nav-btn{padding:8px 2px;gap:4px;font-size:11px;flex-direction:column}
 .nav-btn .nav-icon{font-size:18px}
 </style>
@@ -173,14 +162,13 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 <div class="wheel-wrap">
 <div class="wheel-pointer"></div>
 <div class="wheel" id="wheel">
-<span class="wheel-label" style="--x:62.4%;--y:19.7%">❤️ الحب</span>
-<span class="wheel-label" style="--x:80.3%;--y:37.6%">😂 الضحك</span>
-<span class="wheel-label" style="--x:80.3%;--y:62.4%">🎁 المفاجآت</span>
-<span class="wheel-label" style="--x:62.4%;--y:80.3%">📸 الصور</span>
-<span class="wheel-label" style="--x:37.6%;--y:80.3%">💌 الرسائل</span>
-<span class="wheel-label" style="--x:19.7%;--y:62.4%">🧠 الأسئلة</span>
-<span class="wheel-label" style="--x:19.7%;--y:37.6%">🥰 رومانسية</span>
-<span class="wheel-label" style="--x:37.6%;--y:19.7%">✨ متنوعة</span>
+<span class="wheel-label" style="--x:63.9%;--y:21.2%">❤️ الحب</span>
+<span class="wheel-label" style="--x:81.2%;--y:42.9%">😂 الضحك</span>
+<span class="wheel-label" style="--x:75.0%;--y:70.0%">🎁 المفاجآت</span>
+<span class="wheel-label" style="--x:50.0%;--y:82.0%">💌 الرسائل</span>
+<span class="wheel-label" style="--x:25.0%;--y:70.0%">🧠 الأسئلة</span>
+<span class="wheel-label" style="--x:18.8%;--y:42.9%">🥰 رومانسية</span>
+<span class="wheel-label" style="--x:36.1%;--y:21.2%">✨ متنوعة</span>
 </div>
 <div class="wheel-center">💗</div>
 </div>
@@ -196,65 +184,12 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 <div id="gameDone" class="game-panel game-hidden"><h3 style="color:#ff9cdd">خلصتوا الجولة! 🎉</h3><div class="game-summary" id="gameSummary"></div><button class="game-action" id="newGame">العبوا جولة جديدة</button></div>
 </section></section>
 
-<section class="page-section" id="memoriesPage"><main class="memories-page">
-<h2 class="memories-title">♡ Our Memories ♡</h2>
-<p class="memories-subtitle">Three moments... One beautiful story. ❤️</p>
-<article class="memory-counter" aria-live="off">
-<h3 class="memory-label"><span class="memory-icon">🐴</span>أول مرة شوفت فيها مهرتي</h3>
-<p class="memory-date">10 أبريل 2024</p>
-<div class="memory-days" id="memorySeeDays">0 <span>Years</span> 0 <span>Months</span> 0 <span>Days</span></div>
-<div class="memory-units">
-  <div class="memory-unit"><b id="memorySeeHours">00</b>Hours</div>
-  <div class="memory-unit"><b id="memorySeeMinutes">00</b>Minutes</div>
-  <div class="memory-unit"><b id="memorySeeSeconds">00</b>Seconds</div>
-</div>
-</article>
-<article class="memory-counter" aria-live="off">
-<h3 class="memory-label"><span class="memory-icon">💌</span>أول مرة كلمت فيها مهرتي</h3>
-<p class="memory-date">11 يوليو 2026</p>
-<div class="memory-days" id="memoryTalkDays">0 <span>Years</span> 0 <span>Months</span> 0 <span>Days</span></div>
-<div class="memory-units">
-  <div class="memory-unit"><b id="memoryTalkHours">00</b>Hours</div>
-  <div class="memory-unit"><b id="memoryTalkMinutes">00</b>Minutes</div>
-  <div class="memory-unit"><b id="memoryTalkSeconds">00</b>Seconds</div>
-</div>
-</article>
-<article class="memory-counter" aria-live="off">
-<h3 class="memory-label"><span class="memory-icon">❤️</span>أول مرة اعترفت بحبي ليها</h3>
-<p class="memory-date">23 سبتمبر 2026</p>
-<div class="memory-days" id="memoryLoveDays">0 <span>Years</span> 0 <span>Months</span> 0 <span>Days</span></div>
-<div class="memory-units">
-  <div class="memory-unit"><b id="memoryLoveHours">00</b>Hours</div>
-  <div class="memory-unit"><b id="memoryLoveMinutes">00</b>Minutes</div>
-  <div class="memory-unit"><b id="memoryLoveSeconds">00</b>Seconds</div>
-</div>
-</article>
-<p class="memory-footer"><span class="memory-sparkle">✦</span> Every second since then has been a beautiful memory. ❤️</p>
-</main></section>
 
-<section class="page-section" id="galleryPage"><main class="gallery-page">
-<h2 class="gallery-title">📸 أجمل صور وفيديوهات مهرتي</h2>
-<p class="gallery-sub">كل لحظة معاكي ذكرى محفورة في قلبي ❤️</p>
-<div class="gallery-grid">
-  <div class="gallery-item"><img src="1000135800.png" alt="صورة 1"><div class="gallery-caption">قمر بيلالي في كل طلّة 💗</div></div>
-  <div class="gallery-item"><img src="1000135801.png" alt="صورة 2"><div class="gallery-caption">سحر عيونك وجمالك ✨</div></div>
-  <div class="gallery-item"><img src="1000135802.png" alt="صورة 3"><div class="gallery-caption">أحلى مهارة في الدنيا 🌸</div></div>
-  <div class="gallery-item"><img src="1000135803.png" alt="صورة 4"><div class="gallery-caption">ابتسامتك بتنور دنيتي 🤍</div></div>
-  <div class="gallery-item"><img src="1000135804.png" alt="صورة 5"><div class="gallery-caption">ملامحك الفاتنة يا روحي 🥰</div></div>
-  <div class="gallery-item"><img src="1000135805.png" alt="صورة 6"><div class="gallery-caption">الجمال كله هنا 🥹💕</div></div>
-  <div class="gallery-item"><img src="1000135806.png" alt="صورة 7"><div class="gallery-caption">أغلى وأعز الناس على قلبي 🐎❤️</div></div>
-  <div class="gallery-item"><img src="1000135807.png" alt="صورة 8"><div class="gallery-caption">إشراقة يومي بيكي ✨</div></div>
-  <div class="gallery-item full-width"><img src="1000135808.png" alt="صورة 9"><div class="gallery-caption">ربنا ما يحرمني من ضحكتك ووجودك 💖</div></div>
-  <div class="gallery-item full-width"><img src="1000135809.png" alt="صورة 10"><div class="gallery-caption">أغلى اللحظات والذكريات الجميلة معاكي 🎥💕</div></div>
-</div>
-</main></section>
 
 <nav class="bottom-nav" aria-label="التنقل بين أقسام الموقع">
   <button class="nav-btn active" type="button" data-page="messagesPage"><span class="nav-icon">💌</span><span>الرسائل</span></button>
   <button class="nav-btn" type="button" data-page="wheelPage"><span class="nav-icon">🎡</span><span>العجلة</span></button>
   <button class="nav-btn" type="button" data-page="gamePage"><span class="nav-icon">🧩</span><span>اعرفيني أكتر</span></button>
-  <button class="nav-btn" type="button" data-page="galleryPage"><span class="nav-icon">📸</span><span>الصور</span></button>
-  <button class="nav-btn" type="button" data-page="memoriesPage"><span class="nav-icon">💗</span><span>Our Memories</span></button>
 </nav>
 
 <div class="touch-surprise" id="touchSurprise"><div class="surprise-box"><div class="big-heart">💗</div><p>عارفة يا مهرتي؟ 🥹<br>كل لمسة منك هنا بتفكرني<br>قد إيه إنتي مميزة عندي ❤️</p><button class="surprise-close" id="closeSurprise">بحبك يا مهرة 💕</button></div></div>
@@ -295,7 +230,7 @@ const messages=[
 عايز أقولك إنك دايما على بالي، حتى في أصعب زحمة يومي. اسمك لوحده كفيل يهدّي أعصاببي.`,
 `يا أجمل صدفة غيرت حياتي للأحسن 🌟
 ربنا يخليكي ليا وما يحرمني من وجودك الحنون الدافي جنبي دايماً.`,
-`كل يوم بيعدي باكتشف فيه قد إيه إنتي إنسانة نقية وطيبة القلب 🤍
+`كل يوم بيعدي باكتشف فيه قد إيه إنسانة نقية وطيبة القلب 🤍
 بحب فيكي كل تفصيلة صغيرة وكبيرة.`,
 `يا ملاكي الصغير الشقي 😂💗
 ضحكتك عندي بالدنيا وما فيها، اوعي تبطلي تضحكي أبداً مهما حصل.`,
@@ -379,8 +314,7 @@ function render(){
   const msgEl=document.getElementById("message");
   const dateEl=document.getElementById("date");
   if(msgEl) msgEl.textContent=messages[current];
-  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗
-"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
+  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗\n"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
 }
 
 render();
@@ -401,9 +335,7 @@ async function refreshReadStatus(){
     myButton.textContent=myRead?"💙 أحمد سجّل قراءة رسالة النهارده ✅":"أنا أحمد 💙 قريت الرسالة";
     herButton.disabled=herRead;
     myButton.disabled=myRead;
-    status.textContent="حالة قراءة رسالة النهارده 💌
-مهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"
-أحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
+    status.textContent="حالة قراءة رسالة النهارده 💌\nمهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"\nأحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
   }catch(error){
     console.error(error);
     status.textContent="تم تحميل الرسالة بنجاح (وضع الاتصال المحلي/أو عطل مؤقت في قاعدة البيانات).";
@@ -513,7 +445,6 @@ async function startApp(){
 }
 startApp();
 
-// 50 Questions Question Bank structured into 3 rich levels
 const gameBanks={
   light:[
     "إيه أكتر حاجة بتضحكك بجد من قلبك؟",
