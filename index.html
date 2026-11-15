@@ -1,228 +1,239 @@
-<style>
-/* إضافات عدادات الذكريات */
-.memory-old-counter{display:none!important}
-.memory-years{
-  font-size:clamp(34px,9vw,46px);
-  font-weight:800;
-  color:#ffd0f2;
-  text-shadow:0 0 15px #f36bdf99;
-  direction:rtl;
-  margin:8px 0;
-}
-.memory-new-units{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:5px;
-  margin-top:10px;
-  padding-top:9px;
-  border-top:1px solid #d69aff44;
-}
-.memory-new-unit{
-  font-size:12px;
-  color:#ead9f7;
-  white-space:nowrap;
-}
-.memory-new-unit b{
-  display:block;
-  font-size:17px;
-  color:#f7c9ff;
-  margin-bottom:2px;
-}
-</style>
-
-<script>
-(()=>{
-  // تغيير اسم الوزة إلى المهرة في كل نصوص الموقع
-  document.title="رسالة النهارده لمهرتي ❤️";
-
-  function fixText(text){
-    return text
-      .replace(/أنا وزه/g,"أنا مهرتك")
-      .replace(/أنا وزة/g,"أنا مهرتك")
-      .replace(/وزة قلبي/g,"مهرة قلبي")
-      .replace(/وزتي/g,"مهرتي")
-      .replace(/يا وزة/g,"يا مهرتي")
-      .replace(/أجمل وزة/g,"أجمل مهرة")
-      .replace(/وزة/g,"مهرة")
-      .replace(/🪿|🐥/g,"🐴");
-  }
-
-  function updateTexts(){
-    const walker=document.createTreeWalker(
-      document.body,
-      NodeFilter.SHOW_TEXT
-    );
-    const nodes=[];
-    while(walker.nextNode()){
-      const node=walker.currentNode;
-      if(node.parentElement &&
-        !["SCRIPT","STYLE"].includes(node.parentElement.tagName)){
-        nodes.push(node);
-      }
-    }
-    nodes.forEach(node=>{
-      const updated=fixText(node.nodeValue);
-      if(updated!==node.nodeValue)node.nodeValue=updated;
-    });
-  }
-
-  updateTexts();
-
-  const textObserver=new MutationObserver(updateTexts);
-  textObserver.observe(document.body,{
-    childList:true,
-    characterData:true,
-    subtree:true
-  });
-
-  // تحديث عنوان ورسائل الموقع
-  const mainTitle=document.querySelector("#messagesPage h1");
-  if(mainTitle)mainTitle.textContent="مهرتي، يا أجمل حاجة في دنيتي";
-
-  const introTitle=document.querySelector("#introScreen h2");
-  if(introTitle)introTitle.textContent="يا مهرتي الجميلة ❤️";
-
-  const introAnimal=document.querySelector(".intro-goose");
-  if(introAnimal)introAnimal.textContent="🐴";
-
-  // عدادات الذكريات بالتواريخ الصحيحة
-  const memories=[
-    {
-      prefix:"memoryYou",
-      date:new Date(2024,3,10,16,0,0),
-      label:"♥ أول مرة شوفتك",
-      dateText:"10 أبريل 2024 · 4:00 مساءً"
-    },
-    {
-      prefix:"memoryI",
-      date:new Date(2026,6,11,23,0,0),
-      label:"✉ أول مرة كلمتك",
-      dateText:"11 يوليو 2026 · 11:00 مساءً"
-    }
-  ];
-
-  function addMonths(date,months){
-    const result=new Date(date);
-    const day=result.getDate();
-    result.setDate(1);
-    result.setMonth(result.getMonth()+months);
-    const lastDay=new Date(
-      result.getFullYear(),
-      result.getMonth()+1,
-      0
-    ).getDate();
-    result.setDate(Math.min(day,lastDay));
-    return result;
-  }
-
-  function calendarDifference(start,end){
-    let years=end.getFullYear()-start.getFullYear();
-    let cursor=addMonths(start,years*12);
-
-    if(cursor>end){
-      years--;
-      cursor=addMonths(start,years*12);
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>♡ Our Memories ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    let months=0;
-    while(months<11){
-      const next=addMonths(cursor,1);
-      if(next>end)break;
-      cursor=next;
-      months++;
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 50%, #f8bbd0 100%);
+      font-family: 'Cairo', sans-serif;
+      color: #4a1525;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 16px;
     }
 
-    let remaining=Math.max(0,end-cursor);
-    const days=Math.floor(remaining/86400000);
-    remaining-=days*86400000;
+    .page-section {
+      width: 100%;
+      max-width: 520px;
+    }
 
-    const hours=Math.floor(remaining/3600000);
-    remaining-=hours*3600000;
+    .memories-page {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      padding: 36px 24px;
+      box-shadow: 0 20px 45px rgba(180, 40, 80, 0.12);
+      text-align: center;
+    }
 
-    const minutes=Math.floor(remaining/60000);
-    remaining-=minutes*60000;
+    .intro-goose {
+      font-size: 3.2rem;
+      margin-bottom: 8px;
+      animation: float 3s ease-in-out infinite;
+    }
 
-    const seconds=Math.floor(remaining/1000);
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
-    return {years,months,days,hours,minutes,seconds};
-  }
+    .intro-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #b81d48;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
 
-  function createMemoryLayout(item){
-    const oldDays=document.getElementById(item.prefix+"Days");
-    if(!oldDays)return;
+    .memories-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #d6336c;
+      margin-bottom: 4px;
+      direction: ltr;
+    }
 
-    const article=oldDays.closest(".memory-counter");
-    if(!article)return;
+    .memories-subtitle {
+      font-size: 0.95rem;
+      color: #8c4a5e;
+      margin-bottom: 28px;
+      direction: ltr;
+    }
 
-    article.querySelector(".memory-label").textContent=item.label;
-    article.querySelector(".memory-date").textContent=item.dateText;
+    .memory-counter {
+      background: #fff;
+      border: 1px solid #ffd6e3;
+      border-radius: 20px;
+      padding: 22px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(214, 51, 108, 0.06);
+      transition: transform 0.25s ease;
+    }
 
-    oldDays.classList.add("memory-old-counter");
+    .memory-counter:hover {
+      transform: translateY(-3px);
+    }
 
-    const oldUnits=article.querySelector(".memory-units");
-    if(oldUnits)oldUnits.classList.add("memory-old-counter");
+    .memory-label {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #5c192e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
 
-    const main=document.createElement("div");
-    main.className="memory-years";
-    main.id=item.prefix+"CalendarYears";
+    .memory-icon {
+      font-size: 1.35rem;
+    }
 
-    const units=document.createElement("div");
-    units.className="memory-new-units";
+    .memory-date {
+      font-size: 0.9rem;
+      color: #9e586d;
+      margin-bottom: 16px;
+    }
 
-    ["Months","Days","Hours","Minutes","Seconds"].forEach(unit=>{
-      const cell=document.createElement("div");
-      cell.className="memory-new-unit";
-      cell.innerHTML='<b id="'+item.prefix+unit+'">00</b>'+unit;
-      units.appendChild(cell);
-    });
+    .memory-days {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #d6336c;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      direction: ltr;
+    }
 
-    oldDays.after(main,units);
-  }
+    .memory-days span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #a63a5a;
+    }
 
-  memories.forEach(createMemoryLayout);
+    .memory-units {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      direction: ltr;
+    }
 
-  function updateMemoryCounters(){
-    const now=new Date();
+    .memory-unit {
+      background: #fff5f8;
+      border-radius: 14px;
+      padding: 10px 6px;
+      font-size: 0.78rem;
+      color: #8c4a5e;
+      font-weight: 600;
+    }
 
-    memories.forEach(item=>{
-      const d=calendarDifference(item.date,now);
+    .memory-unit b {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #b81d48;
+      margin-bottom: 2px;
+    }
 
-      const main=document.getElementById(
-        item.prefix+"CalendarYears"
-      );
+    .memory-footer {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #8c4a5e;
+      direction: ltr;
+    }
 
-      if(main){
-        main.textContent=d.years.toLocaleString("en-US")+" Years";
-      }
+    .memory-sparkle {
+      color: #e64980;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+  <section class="page-section" id="memoriesPage">
+    <main class="memories-page">
+      <div class="intro-goose">🐴</div>
+      <h1 class="intro-title">مهرتي، يا أجمل حاجة في دنيتي</h1>
 
-      ["Months","Days","Hours","Minutes","Seconds"].forEach(unit=>{
-        const key=unit.toLowerCase();
-        const el=document.getElementById(item.prefix+unit);
-        if(el)el.textContent=String(d[key]).padStart(2,"0");
-      });
-    });
-  }
+      <h2 class="memories-title">♡ Our Memories ♡</h2>
+      <p class="memories-subtitle">Two moments... One beautiful story. ❤️</p>
 
-  updateMemoryCounters();
-  setInterval(updateMemoryCounters,1000);
+      <article class="memory-counter">
+        <h3 class="memory-label">
+          <span class="memory-icon">🐴</span>
+          أول مرة شوفت فيها مهرتي
+        </h3>
+        <p class="memory-date">10 أبريل 2024 · 4:00 مساءً</p>
+        <div class="memory-days" id="memoryYouDays">0 <span>Days</span></div>
+        <div class="memory-units">
+          <div class="memory-unit"><b id="memoryYouHours">00</b>Hours</div>
+          <div class="memory-unit"><b id="memoryYouMinutes">00</b>Minutes</div>
+          <div class="memory-unit"><b id="memoryYouSeconds">00</b>Seconds</div>
+        </div>
+      </article>
 
-  // تصحيح عدد تحديات العجلة بدل الرقم الثابت 50
-  const challengeTotal=wheelChallenges.reduce(
-    (sum,category)=>sum+category.items.filter(
-      item=>typeof item==="string"&&item.trim()
-    ).length,0
-  );
+      <article class="memory-counter">
+        <h3 class="memory-label">
+          <span class="memory-icon">💌</span>
+          أول مرة كلمت فيها مهرتي
+        </h3>
+        <p class="memory-date">11 يوليو 2026 · 11:00 مساءً</p>
+        <div class="memory-days" id="memoryIDays">0 <span>Days</span></div>
+        <div class="memory-units">
+          <div class="memory-unit"><b id="memoryIHours">00</b>Hours</div>
+          <div class="memory-unit"><b id="memoryIMinutes">00</b>Minutes</div>
+          <div class="memory-unit"><b id="memoryISeconds">00</b>Seconds</div>
+        </div>
+      </article>
 
-  function fixWheelCount(){
-    document.querySelectorAll(".wheel-count,.wheel-status").forEach(el=>{
-      el.textContent=el.textContent
-        .replace(/من 50/g,"من "+challengeTotal)
-        .replace(/الـ50/g,"الـ"+challengeTotal);
-    });
-  }
+      <p class="memory-footer">
+        <span class="memory-sparkle">✦</span>
+        Every second since then has been a beautiful memory. ❤️
+      </p>
+    </main>
+  </section>
 
-  fixWheelCount();
-  setInterval(fixWheelCount,1000);
+  <script>
+    function updateCounter(startDate, daysId, hoursId, minutesId, secondsId) {
+      const start = new Date(startDate).getTime();
+      const now = new Date().getTime();
+      const diff = now - start;
 
-})();
-</script>
+      if (diff < 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById(daysId).innerHTML = `${days} <span>Days</span>`;
+      document.getElementById(hoursId).textContent = String(hours).padStart(2, '0');
+      document.getElementById(minutesId).textContent = String(minutes).padStart(2, '0');
+      document.getElementById(secondsId).textContent = String(seconds).padStart(2, '0');
+    }
+
+    function updateAllCounters() {
+      // العداد الأول: 10 أبريل 2024 · 4:00 مساءً
+      updateCounter("2024-04-10T16:00:00", "memoryYouDays", "memoryYouHours", "memoryYouMinutes", "memoryYouSeconds");
+
+      // العداد الثاني: 11 يوليو 2026 · 11:00 مساءً
+      updateCounter("2026-07-11T23:00:00", "memoryIDays", "memoryIHours", "memoryIMinutes", "memoryISeconds");
+    }
+
+    setInterval(updateAllCounters, 1000);
+    updateAllCounters();
+  </script>
+</body>
+</html>
