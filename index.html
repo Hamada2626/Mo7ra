@@ -2,7 +2,7 @@
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding:24px 16px 112px;font-family:Arial,sans-serif;background:linear-gradient(rgba(10,5,20,0.82),rgba(15,8,28,0.92)),url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%233b1456"/><stop offset="100%" stop-color="%230a0514"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>') center/cover no-repeat fixed;color:#f8eaff;overflow-x:hidden}
 #galaxyCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.card,.wheel-section,.game-section{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.88);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2;border-radius:24px}
+.card,.wheel-section,.game-section,.memories-page{width:100%;max-width:500px;text-align:center;padding:28px 22px;background:rgba(20,12,34,.88);border:1px solid #e1a0ff40;box-shadow:0 0 25px #a855f733,0 15px 45px #0008;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;z-index:2;border-radius:24px}
 .heart{font-size:43px;animation:pulse 1.5s infinite,heartGlow 2s infinite alternate;filter:drop-shadow(0 0 12px #ff70d5)}
 h1{font-size:27px;color:#ff9cdd;margin:12px 0;text-shadow:0 0 15px #ff4fc477}
 .sub,.date,.footer,.wheel-sub,.wheel-status,.wheel-count{font-size:14px;color:#c6a8df;line-height:1.8}
@@ -40,7 +40,7 @@ h1{font-size:27px;color:#ff9cdd;margin:12px 0;text-shadow:0 0 15px #ff4fc477}
 .page-section{display:none;width:100%;max-width:500px;position:relative;z-index:2;margin:auto 0}
 .page-section.active{display:block;animation:pageIn .28s ease}
 @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.bottom-nav{position:fixed;z-index:10000;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(440px,calc(100% - 28px));display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:9px;background:rgba(24,12,38,.94);border:1px solid #d58aff66;border-radius:22px;box-shadow:0 8px 30px #0009,0 0 20px #a855f733;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.bottom-nav{position:fixed;z-index:10000;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(440px,calc(100% - 28px));display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:9px;background:rgba(24,12,38,.94);border:1px solid #d58aff66;border-radius:22px;box-shadow:0 8px 30px #0009,0 0 20px #a855f733;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .nav-btn{border:1px solid transparent;border-radius:15px;background:transparent;color:#d9c3ec;padding:10px 8px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:15px;font-weight:bold;cursor:pointer;transition:.2s}
 .nav-btn .nav-icon{font-size:22px;line-height:1}
 .nav-btn.active{background:linear-gradient(135deg,#8739c7,#d94eaa);color:#fff;box-shadow:0 0 16px #c14cff55}
@@ -93,7 +93,7 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
   body{min-height:100svh;height:100svh;gap:0;padding:5px 8px calc(62px + env(safe-area-inset-bottom));justify-content:center}
   .page-section{width:100%;max-width:500px;margin:0 auto;max-height:100%;overflow:hidden}
   .page-section.active{display:flex;align-items:center;justify-content:center;min-height:0}
-  .card,.wheel-section,.game-section{width:100%;max-height:100%;padding:10px 11px;border-radius:18px;overflow:hidden}
+  .card,.wheel-section,.game-section,.memories-page{width:100%;max-height:100%;padding:10px 11px;border-radius:18px;overflow:hidden}
   .heart{font-size:25px;line-height:1;margin:0}
   h1{font-size:clamp(17px,4.8vw,21px);line-height:1.25;margin:5px 0}
   .sub{font-size:11px;line-height:1.35}
@@ -125,6 +125,26 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
   .game-answer{min-height:58px;max-height:90px;padding:8px;font-size:13px}
   .game-entry{padding:7px;margin:5px 0}
 }
+
+/* Our Memories */
+.memories-page{width:100%;max-width:500px;position:relative;z-index:2;text-align:center;padding:20px 16px 18px;background:rgba(15,10,30,.82);border:1px solid #bd8cff55;border-radius:26px;box-shadow:0 0 28px #8b5cff28,0 15px 45px #0008;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+.memories-page:before{content:"✦      ·      ✧       ·      ✦";display:block;color:#cda8ff;letter-spacing:9px;font-size:13px;text-shadow:0 0 12px #b78cff;margin-bottom:7px}
+.memories-title{direction:ltr;color:#f4c6ff;font-size:29px;line-height:1.2;margin:0 0 7px;text-shadow:0 0 16px #d16cff99}
+.memories-subtitle{direction:ltr;color:#d8b6ef;font-size:13px;margin:0 0 17px}
+.memory-counter{position:relative;direction:ltr;text-align:center;padding:15px 12px 13px;margin:12px 0;border:1px solid #d49aff8c;border-radius:20px;background:linear-gradient(135deg,rgba(37,22,62,.88),rgba(25,15,49,.82));box-shadow:inset 0 0 22px #bd78ff16,0 0 18px #a45bff22;overflow:hidden}
+.memory-counter:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 10% 15%,#d69aff18,transparent 35%),radial-gradient(circle at 90% 85%,#ff79d218,transparent 38%)}
+.memory-counter>*{position:relative;z-index:1}
+.memory-label{font-size:15px;font-weight:bold;color:#f0c5ff;line-height:1.45;margin:0 0 5px}
+.memory-icon{font-size:23px;margin-right:6px;filter:drop-shadow(0 0 8px #e78cff)}
+.memory-date{font-size:11px;color:#cbb0e9;margin:0 0 10px}
+.memory-days{font-size:clamp(18px,4.5vw,26px);font-weight:800;line-height:1.3;color:#ffd0f2;text-shadow:0 0 15px #f36bdf99;font-variant-numeric:tabular-nums}
+.memory-days span{font-size:13px;font-weight:600;color:#e9b8f5}
+.memory-units{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:10px;padding-top:9px;border-top:1px solid #d69aff44}
+.memory-unit{font-size:12px;color:#ead9f7;font-variant-numeric:tabular-nums;white-space:nowrap}
+.memory-unit b{display:block;font-size:17px;color:#f7c9ff;margin-bottom:2px}
+.memory-footer{direction:ltr;color:#e9b8ed;font-size:14px;line-height:1.7;margin:16px 4px 3px;text-shadow:0 0 12px #d46cff55}
+.memory-sparkle{color:#f4b8ff;text-shadow:0 0 12px #d98aff}
+
 </style>
 </head>
 <body>
@@ -161,10 +181,49 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 <div id="gameDone" class="game-panel game-hidden"><h3 style="color:#ff9cdd">خلصتوا الجولة! 🎉</h3><div class="game-summary" id="gameSummary"></div><button class="game-action" id="newGame">العبوا جولة جديدة</button></div>
 </section></section>
 
+
+<section class="page-section" id="memoriesPage"><main class="memories-page">
+<h2 class="memories-title">♡ Our Memories ♡</h2>
+<p class="memories-subtitle">Three moments... One beautiful story. ❤️</p>
+<div class="memory-counter">
+<div class="memory-label"><span class="memory-icon">👀</span> أول مرة شفتك فيها</div>
+<div class="memory-date">10 April 2024</div>
+<div class="memory-days" id="memorySeeDays">0 Years 0 Months 0 Days</div>
+<div class="memory-units">
+<div class="memory-unit"><b id="memorySeeHours">00</b>Hours</div>
+<div class="memory-unit"><b id="memorySeeMinutes">00</b>Minutes</div>
+<div class="memory-unit"><b id="memorySeeSeconds">00</b>Seconds</div>
+</div>
+</div>
+<div class="memory-counter">
+<div class="memory-label"><span class="memory-icon">💬</span> أول مرة اتكلمنا فيها</div>
+<div class="memory-date">11 July 2026</div>
+<div class="memory-days" id="memoryTalkDays">0 Years 0 Months 0 Days</div>
+<div class="memory-units">
+<div class="memory-unit"><b id="memoryTalkHours">00</b>Hours</div>
+<div class="memory-unit"><b id="memoryTalkMinutes">00</b>Minutes</div>
+<div class="memory-unit"><b id="memoryTalkSeconds">00</b>Seconds</div>
+</div>
+</div>
+<div class="memory-counter">
+<div class="memory-label"><span class="memory-icon">💖</span> يوم الاعتراف بحبنا</div>
+<div class="memory-date">23 September 2026</div>
+<div class="memory-days" id="memoryLoveDays">0 Years 0 Months 0 Days</div>
+<div class="memory-units">
+<div class="memory-unit"><b id="memoryLoveHours">00</b>Hours</div>
+<div class="memory-unit"><b id="memoryLoveMinutes">00</b>Minutes</div>
+<div class="memory-unit"><b id="memoryLoveSeconds">00</b>Seconds</div>
+</div>
+</div>
+<div class="memory-footer">بحبك يا أجمل أقدار حياتي <span class="memory-sparkle">✨</span></div>
+</main></section>
+
+
 <nav class="bottom-nav" aria-label="التنقل بين أقسام الموقع">
   <button class="nav-btn active" type="button" data-page="messagesPage"><span class="nav-icon">💌</span><span>الرسائل</span></button>
   <button class="nav-btn" type="button" data-page="wheelPage"><span class="nav-icon">🎡</span><span>العجلة</span></button>
   <button class="nav-btn" type="button" data-page="gamePage"><span class="nav-icon">🧩</span><span>اعرفيني أكتر</span></button>
+  <button class="nav-btn" type="button" data-page="memoriesPage"><span class="nav-icon">💗</span><span>الذكريات</span></button>
 </nav>
 
 <div class="touch-surprise" id="touchSurprise"><div class="surprise-box"><div class="big-heart">💗</div><p>عارفة يا مهرتي؟ 🥹<br>كل لمسة منك هنا بتفكرني<br>قد إيه إنتي مميزة عندي ❤️</p><button class="surprise-close" id="closeSurprise">بحبك يا مهرة 💕</button></div></div>
@@ -289,8 +348,7 @@ function render(){
   const msgEl=document.getElementById("message");
   const dateEl=document.getElementById("date");
   if(msgEl) msgEl.textContent=messages[current];
-  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗
-"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
+  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗\n"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
 }
 
 render();
@@ -311,9 +369,7 @@ async function refreshReadStatus(){
     myButton.textContent=myRead?"💙 أحمد سجّل قراءة رسالة النهارده ✅":"أنا أحمد 💙 قريت الرسالة";
     herButton.disabled=herRead;
     myButton.disabled=myRead;
-    status.textContent="حالة قراءة رسالة النهارده 💌
-مهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"
-أحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
+    status.textContent="حالة قراءة رسالة النهارده 💌\nمهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"\nأحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
   }catch(error){
     console.error(error);
     status.textContent="تم تحميل الرسالة بنجاح (وضع الاتصال المحلي/أو عطل مؤقت في قاعدة البيانات).";
@@ -668,6 +724,47 @@ gameEl("newGame").addEventListener("click",()=>{
     intro.classList.add("hide");
     setTimeout(()=>intro.remove(),700);
   });
+})();
+</script>
+
+<script>
+(()=>{
+  const memories=[
+    {prefix:"memorySee",timestamp:Date.parse("2024-04-10T16:00:00+02:00")},
+    {prefix:"memoryTalk",timestamp:Date.parse("2026-07-11T23:00:00+02:00")},
+    {prefix:"memoryLove",timestamp:Date.parse("2026-09-23T12:00:00+02:00")}
+  ];
+  const put=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=String(value).padStart(2,"0")};
+  function updateMemoryCounters(){
+    const now=Date.now();
+    memories.forEach(item=>{
+      let past=new Date(item.timestamp), current=new Date(now);
+      let years=current.getFullYear()-past.getFullYear();
+      let months=current.getMonth()-past.getMonth();
+      let days=current.getDate()-past.getDate();
+      let hours=current.getHours()-past.getHours();
+      let minutes=current.getMinutes()-past.getMinutes();
+      let seconds=current.getSeconds()-past.getSeconds();
+      
+      if(seconds<0){seconds+=60;minutes--;}
+      if(minutes<0){minutes+=60;hours--;}
+      if(hours<0){hours+=24;days--;}
+      if(days<0){
+        months--;
+        let prevMonth=new Date(current.getFullYear(), current.getMonth(), 0);
+        days+=prevMonth.getDate();
+      }
+      if(months<0){months+=12;years--;}
+      
+      const daysEl=document.getElementById(item.prefix+"Days");
+      if(daysEl) daysEl.innerHTML=`${years} <span style="font-size:13px">Years</span> ${months} <span style="font-size:13px">Months</span> ${days} <span style="font-size:13px">Days</span>`;
+      put(item.prefix+"Hours",hours);
+      put(item.prefix+"Minutes",minutes);
+      put(item.prefix+"Seconds",seconds);
+    });
+  }
+  updateMemoryCounters();
+  setInterval(updateMemoryCounters,1000);
 })();
 </script>
 
