@@ -190,8 +190,8 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 </section></section>
 
 <section class="page-section" id="gamePage"><section class="game-section">
-<h2>🧩 اعرفيني أكتر</h2><div class="game-sub">سؤال ليكي وسؤال ليا... نشوف قد إيه عارفين بعض؟ ❤️</div>
-<div class="game-sub">كل واحد يختار هو مين من جهازه، وبعدها العبوا سوا ❤️</div><div class="game-levels" style="grid-template-columns:repeat(2,1fr)"><button class="level-btn" id="roleMe" type="button">💙 أنا أحمد</button><button class="level-btn" id="roleHer" type="button">💗 أنا هي</button></div><div class="game-sub" id="roleStatus">اختار هويتك على الجهاز ده</div><div id="gameSetup"><div class="game-sub">اختاروا مستوى الأسئلة وابدأوا جولتكوا</div><div class="game-levels"><button class="level-btn selected" data-level="light">🌸 خفيف</button><button class="level-btn" data-level="feelings">❤️ مشاعر</button><button class="level-btn" data-level="deep">🧠 عميق</button></div><button class="game-action" id="startGame">ابدأوا اللعب 🎀</button></div>
+<h2>🧩 اعرفيني أكتر (بنك الأسئلة)</h2><div class="game-sub">سؤال ليكي وسؤال ليا... 50 سؤال متنوع ومتجدد عشان نعرف بعض أكتر! ❤️</div>
+<div class="game-sub">كل واحد يختار هو مين من جهازه، وبعدها العبوا سوا ❤️</div><div class="game-levels" style="grid-template-columns:repeat(2,1fr)"><button class="level-btn" id="roleMe" type="button">💙 أنا أحمد</button><button class="level-btn" id="roleHer" type="button">💗 أنا هي</button></div><div class="game-sub" id="roleStatus">اختار هويتك على الجهاز ده</div><div id="gameSetup"><div class="game-sub">اختاروا مستوى الأسئلة وابدأوا جولتكوا</div><div class="game-levels" style="grid-template-columns:repeat(3,1fr)"><button class="level-btn selected" data-level="light">🌸 خفيف</button><button class="level-btn" data-level="feelings">❤️ مشاعر</button><button class="level-btn" data-level="deep">🧠 عميق</button></div><button class="game-action" id="startGame">ابدأوا اللعب 🎀</button></div>
 <div id="gamePlay" class="game-panel game-hidden"><div class="game-turn" id="gameTurn"></div><div class="game-question" id="gameQuestion"></div><textarea class="game-answer" id="gameAnswer" placeholder="اكتب إجابتك هنا..."></textarea><button class="game-action" id="saveAnswer">احفظ الإجابة وكمل</button><div class="game-progress" id="gameProgress"></div><div class="game-summary" id="gameLiveAnswers"></div></div>
 <div id="gameDone" class="game-panel game-hidden"><h3 style="color:#ff9cdd">خلصتوا الجولة! 🎉</h3><div class="game-summary" id="gameSummary"></div><button class="game-action" id="newGame">العبوا جولة جديدة</button></div>
 </section></section>
@@ -236,20 +236,16 @@ body:not(.app-started) .page-section,body:not(.app-started) .bottom-nav{display:
 <h2 class="gallery-title">📸 أجمل صور وفيديوهات مهرتي</h2>
 <p class="gallery-sub">كل لحظة معاكي ذكرى محفورة في قلبي ❤️</p>
 <div class="gallery-grid">
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%233b1852'/><stop offset='100%' stop-color='%236e226e'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg1)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>💗</text></svg>" alt="صورة 1"><div class="gallery-caption">قمر بيلالي في كل طلّة 💗</div></div>
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg2' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%234a154b'/><stop offset='100%' stop-color='%238a358a'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg2)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>✨</text></svg>" alt="صورة 2"><div class="gallery-caption">سحر عيونك وجمالك ✨</div></div>
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg3' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%232a103f'/><stop offset='100%' stop-color='%235c1d5c'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg3)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🌸</text></svg>" alt="صورة 3"><div class="gallery-caption">أحلى مهارة في الدنيا 🌸</div></div>
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg4' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23381038'/><stop offset='100%' stop-color='%23702270'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg4)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🤍</text></svg>" alt="صورة 4"><div class="gallery-caption">ابتسامتك بتنور دنيتي 🤍</div></div>
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg5' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23421242'/><stop offset='100%' stop-color='%237d287d'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg5)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🥰</text></svg>" alt="صورة 5"><div class="gallery-caption">ملامحك الفاتنة يا روحي 🥰</div></div>
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg6' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23301030'/><stop offset='100%' stop-color='%23631f63'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg6)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🥹</text></svg>" alt="صورة 6"><div class="gallery-caption">الجمال كله هنا 🥹💕</div></div>
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg7' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2352183b'/><stop offset='100%' stop-color='%2391306b'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg7)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>🐎</text></svg>" alt="صورة 7"><div class="gallery-caption">أغلى وأعز الناس على قلبي 🐎❤️</div></div>
-  <div class="gallery-item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><linearGradient id='bg8' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%233b154a'/><stop offset='100%' stop-color='%236d2a85'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg8)'/><text x='50%' y='50%' font-size='80' text-anchor='middle' dominant-baseline='central'>💫</text></svg>" alt="صورة 8"><div class="gallery-caption">إشراقة يومي بيكي ✨</div></div>
-  <div class="gallery-item full-width"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><defs><linearGradient id='bg9' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23401545'/><stop offset='100%' stop-color='%23802b78'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23bg9)'/><text x='50%' y='50%' font-size='90' text-anchor='middle' dominant-baseline='central'>💖 🌸 💖</text></svg>" alt="صورة 9"><div class="gallery-caption">ربنا ما يحرمني من ضحكتك ووجودك 💖</div></div>
-  <div class="gallery-item full-width" style="background:#170d24;padding:20px;text-align:center;border-radius:16px;">
-    <div style="font-size:38px;margin-bottom:8px">🎥</div>
-    <div style="color:#ff9cdd;font-weight:bold;font-size:15px;margin-bottom:4px">فيديو مميز ليكي 🎥💕</div>
-    <div style="color:#c6a8df;font-size:12px">أغلى اللحظات والذكريات الجميلة معاكي</div>
-  </div>
+  <div class="gallery-item"><img src="1000135800.png" alt="صورة 1"><div class="gallery-caption">قمر بيلالي في كل طلّة 💗</div></div>
+  <div class="gallery-item"><img src="1000135801.png" alt="صورة 2"><div class="gallery-caption">سحر عيونك وجمالك ✨</div></div>
+  <div class="gallery-item"><img src="1000135802.png" alt="صورة 3"><div class="gallery-caption">أحلى مهارة في الدنيا 🌸</div></div>
+  <div class="gallery-item"><img src="1000135803.png" alt="صورة 4"><div class="gallery-caption">ابتسامتك بتنور دنيتي 🤍</div></div>
+  <div class="gallery-item"><img src="1000135804.png" alt="صورة 5"><div class="gallery-caption">ملامحك الفاتنة يا روحي 🥰</div></div>
+  <div class="gallery-item"><img src="1000135805.png" alt="صورة 6"><div class="gallery-caption">الجمال كله هنا 🥹💕</div></div>
+  <div class="gallery-item"><img src="1000135806.png" alt="صورة 7"><div class="gallery-caption">أغلى وأعز الناس على قلبي 🐎❤️</div></div>
+  <div class="gallery-item"><img src="1000135807.png" alt="صورة 8"><div class="gallery-caption">إشراقة يومي بيكي ✨</div></div>
+  <div class="gallery-item full-width"><img src="1000135808.png" alt="صورة 9"><div class="gallery-caption">ربنا ما يحرمني من ضحكتك ووجودك 💖</div></div>
+  <div class="gallery-item full-width"><img src="1000135809.png" alt="صورة 10"><div class="gallery-caption">أغلى اللحظات والذكريات الجميلة معاكي 🎥💕</div></div>
 </div>
 </main></section>
 
@@ -290,7 +286,87 @@ const messages=[
 `يا حبيبتي الجميلة 🥹💖
 مش لازم يكون فيه مناسبة عشان أقولك إنك غالية عندي. أنا بحبك في الأيام الحلوة والعادية، وبحب إننا نشارك بعض تفاصيل يومنا حتى لو كانت حاجات صغيرة جدًا. بحب أعرف إيه اللي فرحك وإيه اللي شغلك وإيه اللي نفسك تعمليه. وعايزك تعرفي إن مشاعرك مهمة وإن كلامك ليه قيمة عندي. ربنا يديم بينا الود والتفاهم، ويرزقك راحة بال وفرحة كبيرة تليق بيكي ❤️`,
 `يا دنيتي يا مهرة 💌
-ربنا يحفظك بعينه اللي مبتنامش، ويبعد عنك الأذى والحزن، ويرزقك فرحة من حيث لا تحتسبي. ربنا يسهّل كل حاجة واقفة قدامك، ويكرمك في دراستك وحياتك، ويحققلك الحاجات اللي بتدعي بيها في سرك. ونفسي كل ما تفتحي رسالة من دول تفتكري إن فيه حد بيتمنالك الخير من قلبه، وبيحب يشوفك مبسوطة وناجحة. بحبك يا مهرتي 💗`
+ربنا يحفظك بعينه اللي مبتنامش، ويبعد عنك الأذى والحزن، ويرزقك فرحة من حيث لا تحتسبي. ربنا يسهّل كل حاجة واقفة قدامك، ويكرمك في دراستك وحياتك، ويحققلك الحاجات اللي بتدعي بيها في سرك. ونفسي كل ما تفتحي رسالة من دول تفتكري إن فيه حد بيتمنالك الخير من قلبه، وبيحب يشوفك مبسوطة وناجحة. بحبك يا مهرتي 💗`,
+`يا ضحكة قلبي وبداية أي فرحة 🌸
+وجودك في حياتي بيخلي للأيام طعم تاني خالص. بحب طريقتك لما بتتكلمي عن الحاجات اللي بتحبيها، ولمعان عيونك وأنت بتحكي. ربنا ما يحرمني من طلّتك دي أبدًا.`,
+`صباح الورد والفل على عيونك يا أجمل مهرة في الكون 🌷✨
+بتمنى يكون يومك لطيف زيك، وربنا يكتبلك التوفيق في كل خطوة تخوتيها النهاردة.`,
+`يا أغلى ما أملك في دنيتي ❤️
+عايز أقولك إنك دايما على بالي، حتى في أصعب زحمة يومي. اسمك لوحده كفيل يهدّي أعصاببي.`,
+`يا أجمل صدفة غيرت حياتي للأحسن 🌟
+ربنا يخليكي ليا وما يحرمني من وجودك الحنون الدافي جنبي دايماً.`,
+`كل يوم بيعدي باكتشف فيه قد إيه إنتي إنسانة نقية وطيبة القلب 🤍
+بحب فيكي كل تفصيلة صغيرة وكبيرة.`,
+`يا ملاكي الصغير الشقي 😂💗
+ضحكتك عندي بالدنيا وما فيها، اوعي تبطلي تضحكي أبداً مهما حصل.`,
+`يا مصدر طاقي الإيجابية في كل أوقاتي 💫
+كلمة منك بتفرق معايا جداً وبتديني طاقة أكمل يومي بكل حب.`,
+`مساء الخير والجمال على اللي منورة دنيتي كلها 🌙❤️
+يا رب تكوني قضيتي يوم جميل ومرتاح.`,
+`بحب فيكي إصرارك وحماسك لأحلامك ✨
+عارف إنك هتوصلي لكل اللي بتمنيه وأكتر بكتير يا بطلتي.`,
+`يا أجمل أمانة ربنا رزقني بيها 🔐
+هفضل أحافظ عليك وأخاف عليك من أي حاجة تضايقك طول عمري.`,
+`يا روح قلبي ونبضه 🥰
+لما بحس بالتعب، كفاية بس أتخيل ضحكتك بلاقي روحي رجعتلي.`,
+`يا رفيق دربى وأجمل اختياراتي 🤝💖
+شكراً لإنك دايماً جنبي وبتدعميني من قلبك.`,
+`مهما أقول ومهما أعبر، الكلام بيبقى قليل على حبك في قلبي 💘
+إنتي الحتة الحلوة في عمري كله.`,
+`يا رب يشرح صدرك ويريح بالك ويبعد عنك أي هم أو ضيق 🤲🤍
+إنتي تستاهلي كل فرحة في الدنيا.`,
+`بحب طريقتك لما بتدلع عليا 😂❤️
+دي عندي بالدنيا وما فيها والله، ربنا ما يحرمني من دلالك.`,
+`يا قمر بيسطع في عز الليل 🌌
+إنتي النور اللي بينور طريقي وبيخليني شايف بكرة أحلى.`,
+`صباح التفاؤل والجمال على عيونك الحلوة ☕️🌸
+يلا ابدئي يومك بابتسامة زي قلبك الجميل.`,
+`يا أغلى ناسي وكل دنيتي 🌍
+بحبك بعدد النجوم اللي في السما وبعدد نبضات قلبي.`,
+`كل تفصيلة فيكي مميزة ومش موجودة في حد غيرك 💎
+علشان كده إنتي غالية قوي عندي.`,
+`يا حكاية حلوة بكتبها كل يوم بابتسامة 📖❤️
+ربنا يكتبلي أكمل معاكي العمر كله.`,
+`يا روحي اللي ساكنة روحي 🕊️
+وجودك جنبي بيخلي الدنيا أهدى وأجمل وألطف بكتير.`,
+`لما بحتار في حاجة، أول حد بفتكره وأحب أستشيره إنتي 🧠💕
+عقلدك بيبهرني دايماً.`,
+`يا أجمل اسم بينطق بيه لساني في كل صلاة ودعوة 🙏✨
+ربنا يحفظك ليا ويبارك في عمرك.`,
+`ضحكتك دي هي دوا لكل تعب ومجهود في يومي 😌💗
+أديمها الله عليكي نعمة.`,
+`يا رفيقة عمري وسند قلبي 🌟
+مبسوط بوجودنا مع بعض وبكل تفاصيلنا البسيطة.`,
+`يا سكر دنيتي وعسلها 🍯❤️
+كل كلامك لطيف زيك وبيحلي مرارة أي يوم صعب.`,
+`بحب فيكي طيبة قلبك وحنانك على الكل 🌸
+ده أكتر شيء خلاني أتعلق بيكي من أول لحظة.`,
+`يا فرحة جات لحد عندي من السما 🎁✨
+مش هبطل أشكر ربنا إنك في حياتي.`,
+`كل سنة وإنتي قلبي وكل سنة وإنتي معايا في كل خطوة 🎂❤️
+ربنا يديم عليكي السعادة.`,
+`يا أجمل وردة في بستان عمري كله 🌹
+بتمنى أفضل أسقيها بحبي واهتمامي طول العمر.`,
+`يا صوت هادي بيهدّي ثورة أي يوم طويل 🎶
+سماع صوتك عندي بالدنيا وما فيها.`,
+`لما بتزعلي بحس إن الدنيا كلها قفلت في وشي 🥺
+علشان كده دايماً بدعي أشوفك مبسوطة.`,
+`يا ألطف وأحن إنسانة عرفتها عينيا 👀💖
+ربنا ما يحرمني من حنانك وطيبتك أبداً.`,
+`بحب نظرتك للأشياء وبحب طريقة تفكيرك المميزة 🧠✨
+دايماً بتلهميني.`,
+`يا بطلة أيامي وصاحبة القلب الطيب 🏆❤️
+فخور بيكي دايماً وبكل خطوة بتنجحي فيها.`,
+`يا نسمة حلوة بتعدي تطري على قلبي في الحر 🌬️🌸
+وجودك راحة مالهاش مثيل.`,
+`كل خطوة بقرب فيها منكي بتأكدلي إإنك النص التاني الصح 👣💕
+بحبك يا مهرتي.`,
+`يا حلم اتحقق وبقى حقيقة عايشها كل يوم ✨
+أحلى من كل الأحلام اللي حلمتها.`,
+`يا منورة عيوني وكل تفاصيل أيامي 💡❤️
+بحبك قد الكون كله وباسمه.`,
+`يا أغلى هدية أهداهالي الوقت والقدر 🎁💖
+هفضل أحبك وأصونك لحد آخر العمر.`
 ];
 
 const startDate=new Date(2026,9,16);
@@ -303,7 +379,8 @@ function render(){
   const msgEl=document.getElementById("message");
   const dateEl=document.getElementById("date");
   if(msgEl) msgEl.textContent=messages[current];
-  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗\n"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
+  if(dateEl) dateEl.textContent="رسالة النهارده رقم "+(current+1)+" من "+messages.length+" 💗
+"+new Date().toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"});
 }
 
 render();
@@ -324,7 +401,9 @@ async function refreshReadStatus(){
     myButton.textContent=myRead?"💙 أحمد سجّل قراءة رسالة النهارده ✅":"أنا أحمد 💙 قريت الرسالة";
     herButton.disabled=herRead;
     myButton.disabled=myRead;
-    status.textContent="حالة قراءة رسالة النهارده 💌\nمهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"\nأحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
+    status.textContent="حالة قراءة رسالة النهارده 💌
+مهرتي: "+(herRead?"❤️ قريتها وسجّلت القراءة":"لسه مسجلتش القراءة")+"
+أحمد: "+(myRead?"💙 قرأها وسجّل القراءة":"لسه مسجلش القراءة");
   }catch(error){
     console.error(error);
     status.textContent="تم تحميل الرسالة بنجاح (وضع الاتصال المحلي/أو عطل مؤقت في قاعدة البيانات).";
@@ -434,23 +513,65 @@ async function startApp(){
 }
 startApp();
 
-const gameBanks={light:[
-  "إيه أكتر حاجة بتضحكك؟",
-  "لو عندنا يوم فاضي، تحب نعمل إيه؟",
-  "إيه أكتر أكلة بتحبها؟",
-  "إيه أغرب عادة عندك؟",
-  "مين فينا بيضحك أسرع؟"
-],feelings:[
-  "إيه أكتر تصرف بيخليك تحس إنك متقدّر؟",
-  "إيه أكتر حاجة بتحبها في شخصية التاني؟",
-  "إمتى بتحس إن يومك بقى أحسن؟",
-  "إيه معنى الاهتمام بالنسبالك؟"
-],deep:[
-  "إيه قيمة مستحيل تتنازل عنها؟",
-  "إيه حلم نفسك تحققه وليه؟",
-  "لما تواجه قرار صعب، بتفكر إزاي؟",
-  "إيه تجربة غيرت طريقة تفكيرك؟"
-]};
+// 50 Questions Question Bank structured into 3 rich levels
+const gameBanks={
+  light:[
+    "إيه أكتر حاجة بتضحكك بجد من قلبك؟",
+    "لو عندنا يوم كامل فاضي، تحب نقضيه فين وإزاي؟",
+    "إيه أكتر أكلة بتحب تاكلها ومبتزهقش منها؟",
+    "إيه أغرب عادة أو طقس عندك قبل النوم؟",
+    "مين فينا بيتعصب أسرع ومين بيهدي التاني؟",
+    "لو سافرنا رحلة مفاجئة دلوقتي، تختار تروح مكان هادي ولا مغامرة؟",
+    "إيه أكتر كلمة أو جملة بتقولها دايماً في كلامك؟",
+    "لو هتعلمني حاجة جديدة ببرعة، هتعلّمني إيه؟",
+    "إيه أكتر موقف محرج حصلك وبتفتكره تضحك؟",
+    "لو طلبت منك ترسم حاجة دلوقتي على الهوا، هترسم إيه؟",
+    "إيه المشروب اللي مستحيل يبدأ يومك من غيره؟",
+    "لو هتعيش في فيلم سينما، تختار فيلم رومانسي ولا أكشن؟",
+    "إيه أكتر وقت في اليوم بتحس فيه بنشاط وإبداع؟",
+    "لو قدامك طبق حلويات مشكل، هتاكل إيه الأول؟",
+    "إيه أكتر حاجة بتلفت انتباهك في أول مقابلة لشخص؟",
+    "لو هتعمل مقلب فيا دلوقتي، هيكون عبارة عن إيه؟",
+    "إيه أكتر لون بتحس إنه بيمثل حالتك المزاجية؟"
+  ],
+  feelings:[
+    "إيه أكتر تصرف بعمله بيخليك تحس إنك غالي ومتقدّر عندي؟",
+    "إيه أكتر صفة بتحبها في شخصيتي ومش بتلاقيها في حد تاني؟",
+    "في أي وقت بتشعر إن يومك بقى أجمل وأحسن بكتير؟",
+    "إيه معنى الاهتمام الحقيقي بالنسبالك في العلاقة؟",
+    "إمتى حسيت بأقرب لحظة بينا ومنستهاش أبداً؟",
+    "إيه أكتر كلمة تحب تسمعها مني لما تكون متضايق أو تعبان؟",
+    "لو هتوصف شعورك ناحيتي بكلمة واحدة، هتكون إيه؟",
+    "إيه الحاجة البسيطة اللي ممكن أعملها وتفرحك طول اليوم؟",
+    "إمتى حسيت لأول مرة إننا قريبين من بعض بالطريقة دي؟",
+    "إيه أكتر موقف حسيت فيه بحناني وخوفي عليك؟",
+    "إيه أمل أو أمنية بتدعي بيها لينا دايماً في سرك؟",
+    "إزاي بتقدر تتغلب على أي شعور بالوحدة أو الزعل؟",
+    "إيه أكتر ذكرى قديمة بينا ولسه فاكر تفاصيلها بكل حب؟",
+    "لو هتهديني هدية معنوية دلوقتي، هتكون إيه؟",
+    "إيه شعورك لما بتشوف رسالة مني فجأة في نص يومك؟",
+    "إيه أكتر شيء بيطمن قلبك ويخليه يرتاح ناحيتي؟"
+  ],
+  deep:[
+    "إيه هي القيمة الأخلاقية أو الإنسانية اللي مستحيل تتنازل عنها أبداً؟",
+    "إيه أكبر حلم نفسك تحققه في حياتك الشخصية أو العملية؟",
+    "لما بيقابلني قرار مصيري وصعب، بتفكر في إزاي؟",
+    "إيه أكتر تجربة قاسية مررت بيها وغيرت طريقتك في تفكيرك؟",
+    "لو هترجع بالزمن لنقطة معينة، هل هتغير فيها حاجة وليه؟",
+    "إيه مفهوم النجاح الحقيقي من وجهة نظرك؟",
+    "إزاي بتواجه مخاوفك الكبيرة في الحياة؟",
+    "إيه الدرس الأهم اللي تعلمته من السنين اللي فاتت؟",
+    "لو هتوصف مستقبلك اللي جاي في جملة، هتقول إيه؟",
+    "إيه أكتر صفة تتمنى الناس تفتكرك بيها بعد عمري طويل؟",
+    "إزاي بتحافظ على سلامك النفسي وسط ضغوط الدنيا؟",
+    "إيه الإيمان أو الفكرة اللي بتمسك بيها لما الدنيا تضيق؟",
+    "لو رسالتك الأخيرة هتوصل لكل الناس، هتحب تقولهم إيه؟",
+    "إيه أكتر حاجة فخور بيها عملتها بنفسك في حياتك؟",
+    "إزاي بتشوف دور الحب والدعم في بناء الإنسان وصناعته؟",
+    "إيه التغيير الجذري اللي نفسك تعمله في شخصيتك أو حياتك؟",
+    "لو قدامك فرصة تبدأ من جديد في مكان تاني، هتعمل إيه؟"
+  ]
+};
 
 const gameRef=doc(db,"shared_games","zozo_know_game");
 const gameRoleKey="zozo_know_game_role";
