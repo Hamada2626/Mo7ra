@@ -152,7 +152,7 @@ import{initializeApp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-ap
 بحبك قد الكون كله وباسمه.`,
 `يا أغلى هدية أهداهالي الوقت والقدر 💖
 هفضل أحبك وأصونك لحد آخر العمر.`
-];const startDate=new Date(2026,9,16);function dayNumber(d){return Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000)}
+];const startDate=new Date(2026,10,17);function dayNumber(d){return Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000)}
 function getDailyIndex(){return Math.max(0,dayNumber(new Date())-dayNumber(startDate))%messages.length}
 function getDateKey(){const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
 function render(){
