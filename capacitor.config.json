@@ -1,0 +1,13 @@
+{
+  "appId": "com.mo7ra.app",
+  "appName": "Mø7rä",
+  "webDir": "www",
+  "server": {
+    "url": "https://hamada2626.github.io/Mo7ra/",
+    "androidScheme": "https",
+    "cleartext": false,
+    "allowNavigation": [
+      "hamada2626.github.io"
+    ]
+  }
+}

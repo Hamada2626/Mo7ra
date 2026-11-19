@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null
+        && request.auth.uid in ['cDUVXcTJyYQB5BFCskwlTRM795k1', 'GYcvd1nMhtTa0aoXbRl82CIRt9y2'];
+    }
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == 'cDUVXcTJyYQB5BFCskwlTRM795k1';
+    }
+    // The second account is read-only. All application collections are readable
+    // by the two approved accounts, but only the admin UID can change data.
+    match /{document=**} {
+      allow read: if signedIn();
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}
