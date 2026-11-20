@@ -1,18 +1,21 @@
 
-name: Build Mø7rä APK
+name: Build Mo7ra Android APK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -21,12 +24,12 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: 21
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
         with:
-          packages: 'platform-tools'
+          packages: platform-tools
 
       - name: Install Android SDK packages
         run: |
@@ -35,19 +38,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Capacitor Assets
+      - name: Install Capacitor assets
         run: npm install --no-save @capacitor/assets
 
       - name: Add Android platform
         run: npx cap add android
 
-      - name: Generate Android App Icon
+      - name: Generate app icons
         run: npx capacitor-assets generate --android
 
-      - name: Sync Android project
+      - name: Sync Capacitor
         run: npx cap sync android
 
-      - name: Build debug APK
+      - name: Build APK
         run: |
           cd android
           chmod +x gradlew
